@@ -6,8 +6,8 @@ const port = process.env.PORT || 3002;
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
-const authRouter = require('./routes/auth');
-app.use('/auth', authRouter);
+const questionsRouter = require('./routes/questions');
+app.use('/questions', questionsRouter);
 
 app.listen(port, () => {
   console.log(`[Auth] Starting on http://localhost:${port}`);

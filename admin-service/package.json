@@ -1,0 +1,22 @@
+{
+  "name": "admin-service",
+  "version": "1.0.0",
+  "description": "Microservice for administrators - EGEL",
+  "main": "app.js",
+  "scripts": {
+    "start": "app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "JS",
+    "api"
+  ],
+  "author": "OnlyAlec",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

@@ -14,6 +14,20 @@ const router = express.Router();
  *       bearerFormat: JWT
  */
 
+/**
+ * Simple JWT-presence middleware.
+ * Replace with real verification (e.g., Firebase Admin) as needed.
+ */
+function jwtRequired(req, res, next) {
+  const auth = req.headers['authorization'] || '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
+  if (!token) {
+    return res.status(401).json({ message: 'Unauthorized: Missing or invalid JWT' });
+  }
+  // TODO: validate token (Firebase Admin, etc.) and attach decoded info to req.user
+  req.token = token;
+  next();
+}
 
 /**
  * @swagger

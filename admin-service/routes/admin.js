@@ -5,7 +5,7 @@ const router = express.Router();
  * @swagger
  * tags:
  *   - name: Administrator
- *     description: 
+ *     description: Administrative endpoints to manage users, questions, and reports.
  * components:
  *   securitySchemes:
  *     bearerAuth:
@@ -34,12 +34,13 @@ function jwtRequired(req, res, next) {
  * /admin/users:
  *   get:
  *     tags: [Administrator]
- *     summary: 
- *     description: 
+ *     summary: List all users
+ *     description: Returns a list of all registered users. Requires a valid JWT Bearer token in the Authorization header.
+ *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: 
+ *         description: Users fetched successfully.
  *       401:
  *         description: Unauthorized - Missing or invalid JWT.
  */
@@ -52,8 +53,9 @@ router.get('/users', jwtRequired, (req, res) => {
  * /admin/users/{id}/permissions:
  *   put:
  *     tags: [Administrator]
- *     summary: 
- *     description: 
+ *     summary: Update a user's permissions
+ *     description: Updates the roles or access permissions for the specified user. Requires a valid JWT Bearer token.
+ *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
@@ -64,7 +66,7 @@ router.get('/users', jwtRequired, (req, res) => {
  *         description: User identifier
  *     responses:
  *       200:
- *         description: 
+ *         description: Permissions updated successfully.
  *       401:
  *         description: Unauthorized - Missing or invalid JWT.
  */
@@ -74,54 +76,16 @@ router.put('/users/:id/permissions', jwtRequired, (req, res) => {
 
 /**
  * @swagger
- * /admin/questions/all:
- *   get:
- *     tags: [Administrator]
- *     summary: 
- *     description: 
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: 
- *       401:
- *         description: Unauthorized - Missing or invalid JWT.
- */
-router.get('/questions/all', jwtRequired, (req, res) => {
-  res.send('Get all questions endpoint!');
-});
-
-/**
- * @swagger
- * /admin/questions/{id}:
- *   delete:
- *     tags: [Administrator]
- *     summary: 
- *     description: 
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description:
- *       401:
- *         description: Unauthorized - Missing or invalid JWT.
- */
-router.delete('/questions/:id', jwtRequired, (req, res) => {
-  res.send('Delete question [User] endpoint!');
-});
-
-/**
- * @swagger
  * /admin/reports:
  *   get:
  *     tags: [Administrator]
- *     summary: 
- *     description: 
+ *     summary: Get administrative reports
+ *     description: Returns aggregated administrative reports and analytics. Requires a valid JWT Bearer token.
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: 
+ *         description: Reports fetched successfully.
  *       401:
  *         description: Unauthorized - Missing or invalid JWT.
  */

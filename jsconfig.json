@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "jsx": "preserve",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "strict": false,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./auth-service/src/*"],
+      "@config/*": ["./auth-service/src/config/*"],
+      "@controllers/*": ["./auth-service/src/controllers/*"],
+      "@middleware/*": ["./auth-service/src/middleware/*"],
+      "@models/*": ["./auth-service/src/models/*"],
+      "@routes/*": ["./auth-service/src/routes/*"],
+      "@services/*": ["./auth-service/src/services/*"],
+      "@utils/*": ["./auth-service/src/utils/*"]
+    }
+  },
+  "include": [
+    "auth-service/**/*",
+    "admin-service/**/*",
+    "files-service/**/*",
+    "questions-service/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    "dist",
+    "build",
+    ".git"
+  ]
+}

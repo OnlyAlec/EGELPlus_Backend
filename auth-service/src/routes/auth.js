@@ -1,0 +1,145 @@
+import express from "express";
+
+const router = express.Router();
+import { startRegisterUser } from "../controllers/authController.js";
+import { basicPresence } from "../middleware/validation.js";
+import { ensureAppError } from "../utils/errors.js";
+import { logger } from "../utils/logger.js";
+
+/**
+ * @swagger
+ * tags:
+ *   - name: Auth
+ *     description: Authentication and user session endpoints
+ * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ */
+
+/**
+ * Simple JWT-presence middleware.
+ * Replace with real verification (e.g., Firebase Admin) as needed.
+ */
+function jwtRequired(req, res, next) {
+  const auth = req.headers["authorization"] || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+  if (!token) {
+    return res
+      .status(401)
+      .json({ message: "Unauthorized: Missing or invalid JWT" });
+  }
+  // TODO: validate token (Firebase Admin, etc.) and attach decoded info to req.user
+  req.token = token;
+  next();
+}
+
+/**
+ * @swagger
+ * /auth/profile:
+ *   get:
+ *     tags: [Auth]
+ *     summary: Get authenticated user's profile
+ *     description: Returns the profile of the currently authenticated user. Requires a valid JWT Bearer token in the Authorization header.
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Profile fetched successfully.
+ *       401:
+ *         description: Unauthorized - Missing or invalid JWT.
+ */
+router.get("/profile", jwtRequired, (req, res) => {
+  res.send("Profile endpoint!");
+});
+
+/**
+ * @swagger
+ * /auth/verify:
+ *   get:
+ *     tags: [Auth]
+ *     summary: Verify JWT and return token details
+ *     description: Validates the provided JWT and returns decoded information. Requires a valid JWT Bearer token.
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Token is valid.
+ *       401:
+ *         description: Unauthorized - Missing or invalid JWT.
+ */
+router.get("/verify", jwtRequired, (req, res) => {
+  res.send("Verify endpoint!");
+});
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     tags: [Auth]
+ *     summary: Log in and obtain a JWT
+ *     description: Authenticates user credentials and returns a JWT on success. Does not require authentication.
+ *     responses:
+ *       200:
+ *         description: Logged in successfully; JWT returned.
+ *       401:
+ *         description: Invalid credentials.
+ */
+router.post("/login", (req, res) => {
+  res.send("Login endpoint!");
+});
+
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     tags: [Auth]
+ *     summary: Register a new user
+ *     description: Creates a new user account. Does not require authentication.
+ *     responses:
+ *       201:
+ *         description: User registered successfully.
+ */
+router.post("/register", basicPresence, async (req, res) => {
+  const result = await startRegisterUser(req);
+  if (result.success) {
+    logger.info("Register endpoint success", { id: result.data.id });
+    return res.status(201).json({
+      data: { id: result.data.id, email: result.data.email },
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  const appErr = ensureAppError(result.error);
+  logger.warn("Register endpoint error", {
+    code: appErr.code,
+    status: appErr.status,
+  });
+  return res.status(appErr.status).json({
+    error: { code: appErr.code, message: appErr.message },
+    timestamp: new Date().toISOString(),
+  });
+});
+
+/**
+ * @swagger
+ * /auth/logout:
+ *   post:
+ *     tags: [Auth]
+ *     summary: Log out the current user
+ *     description: Invalidates the current session. Requires a valid JWT Bearer token.
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Logged out successfully.
+ *       401:
+ *         description: Unauthorized - Missing or invalid JWT.
+ */
+router.post("/logout", jwtRequired, (req, res) => {
+  res.send("Logout endpoint!");
+});
+
+export default router;

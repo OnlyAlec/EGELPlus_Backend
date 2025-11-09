@@ -7,3 +7,4 @@ auth-service/firebase.json
 node_modules/*
 package.json
 package-lock.json
+auth-service/dist/*

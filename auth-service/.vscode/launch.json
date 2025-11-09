@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Auth Service",
+      "program": "server.js",
+      "cwd": "${workspaceFolder}\\auth-service",
+      "envFile": "${workspaceFolder}\\auth-service\\.env"
+    }
+  ]
+}

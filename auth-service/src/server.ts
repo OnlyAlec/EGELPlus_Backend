@@ -8,7 +8,8 @@ const startServer = (): Server | undefined => {
   try {
     const server = app.listen(PORT, () => {
       logger.info(`[Auth Service] Server running on port ${PORT}`);
-      logger.info(`\tDocs: http://localhost:${PORT}/api-docs`);
+      logger.info(`\tAPI Reference: http://localhost:${PORT}/reference`);
+      logger.info(`\tOpenAPI Spec: http://localhost:${PORT}/openapi.json`);
       logger.info(`\tHealth: http://localhost:${PORT}/health`);
     });
 

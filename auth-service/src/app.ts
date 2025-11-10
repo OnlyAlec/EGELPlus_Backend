@@ -4,14 +4,38 @@ import express, {
   NextFunction,
   ErrorRequestHandler,
 } from "express";
+import swaggerJsdoc from "swagger-jsdoc";
 
 import authRouter from "./routes/auth";
 import { logger } from "./utils/logger";
 import { AppError } from "./utils/errors";
+import { apiReference } from "@scalar/express-api-reference";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// * Swagger/OpenAPI Configuration
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "EGEL Plus - Auth Service API",
+      version: "1.1.0",
+      description:
+        "Authentication and user management service for EGEL Plus app",
+    },
+    servers: [
+      {
+        url: "http://localhost:3000",
+        description: "Development server",
+      },
+    ],
+  },
+  apis: ["./src/routes/*.ts"],
+};
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // * CORS
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -38,6 +62,26 @@ app.get("/health", (req: Request, res: Response) => {
     uptime: process.uptime(),
   });
 });
+
+// * OpenAPI JSON endpoint - serves the generated spec for Scalar
+app.get("/openapi.json", (req: Request, res: Response) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
+
+// * Scalar API Reference
+app.use(
+  "/docs",
+  apiReference({
+    theme: "kepler",
+    showToolbar: "never",
+    hideClientButton: true,
+    telemetry: false,
+    isLoading: true,
+    documentDownloadType: "json",
+    url: "/openapi.json",
+  })
+);
 
 // * Routes
 app.use("/auth", authRouter);

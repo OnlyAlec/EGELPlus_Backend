@@ -3,10 +3,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Auth Service",
-      "program": "server.js",
-      "cwd": "${workspaceFolder}\\auth-service",
-      "envFile": "${workspaceFolder}\\auth-service\\.env"
+      "name": "Run Dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }

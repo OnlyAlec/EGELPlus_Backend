@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: ./auth-service
+    container_name: auth-service
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    networks:
+      - internal
+
+  # --- Servicio de Preguntas (JS) ---
+  # questions-service:
+  #   build:
+  #     context: ./questions-service
+  #   container_name: questions-service
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3002:3002"
+  #   networks:
+  #     - internal
+
+  # --- Servicio de Archivos (JS) ---
+  # files-service:
+  #   build:
+  #     context: ./files-service
+  #   container_name: files-service
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3003:3003"
+  #   networks:
+  #     - internal
+
+  # --- Servicio de Administración (JS) ---
+  # admin-service:
+  #   build:
+  #     context: ./admin-service
+  #   container_name: admin-service
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3004:3004"
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - internal
+
+  # --- API Gateway (NGINX) ---
+  nginx-gateway:
+    build:
+      context: ./nginx
+    container_name: nginx-gateway
+    restart: unless-stopped
+    ports:
+      - "8642:80"
+    depends_on:
+      - auth-service
+      - questions-service
+      - files-service
+      - admin-service
+    networks:
+      - internal

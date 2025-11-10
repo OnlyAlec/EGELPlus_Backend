@@ -8,8 +8,7 @@
     "start": "node dist/src/server.js",
     "dev": "nodemon --watch src --ext ts --exec \"ts-node\" src/server.ts",
     "lint": "eslint .",
-    "format": "prettier --write .",
-    "prepare": "husky"
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -37,7 +36,6 @@
     "@typescript-eslint/parser": "^8.46.3",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
-    "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",

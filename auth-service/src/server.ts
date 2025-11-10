@@ -8,9 +8,8 @@ const startServer = (): Server | undefined => {
   try {
     const server = app.listen(PORT, () => {
       logger.info(`[Auth Service] Server running on port ${PORT}`);
-      logger.info(`\tAPI Reference: http://localhost:${PORT}/reference`);
-      logger.info(`\tOpenAPI Spec: http://localhost:${PORT}/openapi.json`);
-      logger.info(`\tHealth: http://localhost:${PORT}/health`);
+      logger.info(`\tAPI Reference: http://localhost:${PORT}/auth/docs`);
+      logger.info(`\tHealth: http://localhost:${PORT}/auth/health`);
     });
 
     const gracefulShutdown = (signal: string): void => {

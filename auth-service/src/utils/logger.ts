@@ -82,13 +82,10 @@ function log(level: LogLevel, message: string, meta?: LogMeta | Error): void {
   const line = `${base} :: ${message}${metaStr}${errStack}`;
   if (level === "error") {
     process.stderr.write(line + "\n");
-    console.log(line + "\n");
   } else if (level === "warn") {
     process.stderr.write(line + "\n");
-    console.log(line + "\n");
   } else {
     process.stdout.write(line + "\n");
-    console.log(line + "\n");
   }
 }
 

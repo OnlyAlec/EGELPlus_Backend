@@ -3,6 +3,7 @@ import { hash as bcryptHash } from "bcrypt";
 import { ConflictError, DatabaseError } from "../utils/errors";
 import { SALT, USER_ROLE_ID } from "../config/constants";
 import { RegisterUserDto } from "../validators/authSchema";
+import { logger } from "../utils/logger";
 
 export async function createUser(userData: RegisterUserDto) {
   const { name, email, password } = userData;
@@ -15,6 +16,7 @@ export async function createUser(userData: RegisterUserDto) {
   });
 
   if (existingUserEmail) {
+    logger.warn("Attempt to register with existing email", { email });
     throw new ConflictError("User already exists with this email");
   }
 
@@ -44,8 +46,14 @@ export async function createUser(userData: RegisterUserDto) {
   });
 
   if (!created) {
+    logger.error("Failed to create user in database", { email, name });
     throw new DatabaseError("Failed to create user");
   }
+
+  logger.info("User created successfully", {
+    userId: created.id,
+    email: created.email
+  });
 
   return created;
 }

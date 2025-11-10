@@ -2,13 +2,19 @@ import { Response } from "express";
 import { createUser } from "../services/authService";
 import { ensureAppError } from "../utils/errors";
 import { RequestExtend } from "../types/request";
+import { logger } from "../utils/logger";
 
 export async function handleRegisterUser(req: RequestExtend, res: Response) {
   try {
     const { name, email, password } = req.validatedData || req.body;
     const newUser = await createUser({ name, email, password });
 
-    res.status(201).json({
+    logger.info(`[${req.path}] User registered successfully`, {
+      userId: newUser.id,
+      email: newUser.email,
+    });
+
+    return res.status(201).json({
       success: true,
       data: {
         name: newUser.name,
@@ -19,8 +25,12 @@ export async function handleRegisterUser(req: RequestExtend, res: Response) {
       },
     });
   } catch (error) {
+    logger.error(`[${req.path}] Error registering user`, {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
     const appError = ensureAppError(error);
-    res.status(appError.status).json({
+    return res.status(appError.status).json({
       success: false,
       error: {
         code: appError.code,

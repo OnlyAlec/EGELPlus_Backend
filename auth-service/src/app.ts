@@ -54,7 +54,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // * General Endpoints
-app.get("/health", (req: Request, res: Response) => {
+app.get("/auth/health", (req: Request, res: Response) => {
   res.status(200).json({
     status: "OK",
     service: "auth-service",
@@ -64,14 +64,14 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 // * OpenAPI JSON endpoint - serves the generated spec for Scalar
-app.get("/openapi.json", (req: Request, res: Response) => {
+app.get("/auth/openapi.json", (req: Request, res: Response) => {
   res.setHeader("Content-Type", "application/json");
   res.send(swaggerSpec);
 });
 
 // * Scalar API Reference
 app.use(
-  "/docs",
+  "/auth/docs",
   apiReference({
     theme: "kepler",
     showToolbar: "never",
@@ -79,7 +79,7 @@ app.use(
     telemetry: false,
     isLoading: true,
     documentDownloadType: "json",
-    url: "/openapi.json",
+    url: "/auth/openapi.json",
   })
 );
 

@@ -4,16 +4,23 @@ import { ZodError, ZodObject } from "zod";
 import { ValidationError } from "../utils/errors";
 import { RequestExtend } from "../types/request";
 
-export function validateRequest(schema: ZodObject, path: String) {
+export function validateRequest(schema: ZodObject, path: string) {
   return (req: RequestExtend, res: Response, next: NextFunction) => {
     logger.info(`[${path}] Init validation!`);
     try {
       const data = schema.parse(req.body);
       req.validatedData = data;
+      logger.info(`[${path}] OK validation!`);
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        logger.error(`[${path}] ${error.issues.length} error/s in validation`);
+        logger.error(`[${path}] Validation failed`, {
+          errorCount: error.issues.length,
+          issues: error.issues.map((issue) => ({
+            field: issue.path.join("."),
+            message: issue.message,
+          })),
+        });
 
         const details = error.issues.map((issue) => ({
           message: issue.message,
@@ -35,6 +42,10 @@ export function validateRequest(schema: ZodObject, path: String) {
         });
         return;
       }
+      logger.error(`[${path}] Unexpected validation error`, {
+        error: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+      });
       next(error);
     }
   };

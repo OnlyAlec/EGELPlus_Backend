@@ -1,4 +1,7 @@
-version: '3.8'
+networks:
+  internal:
+    external: true
+    name: oa_server_internal
 
 services:
   auth-service:
@@ -56,8 +59,8 @@ services:
       - "8642:80"
     depends_on:
       - auth-service
-      - questions-service
-      - files-service
-      - admin-service
+      # - questions-service
+      # - files-service
+      # - admin-service
     networks:
       - internal

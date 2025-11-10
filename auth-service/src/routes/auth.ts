@@ -1,6 +1,8 @@
 import express from "express";
-import { ensureAppError } from "../utils/errors";
 import { logger } from "../utils/logger";
+import { validateRequest } from "../middleware/validateRequest";
+import { RegisterSchema } from "../validators/authSchema";
+import { handleRegisterUser } from "../controllers/authController";
 
 const router = express.Router();
 
@@ -87,17 +89,83 @@ router.post("/login", (req, res) => {
  *     tags: [Auth]
  *     summary: Register a new user
  *     description: Creates a new user account. Does not require authentication.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 minLength: 3
+ *                 description: Full name of the user (minimum 3 characters).
+ *                 example: "Alice Gomez"
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: Valid email address for the user.
+ *                 example: "alice@example.com"
+ *               password:
+ *                 type: string
+ *                 description: User password. Do not include in responses. Apply your server-side strength rules.
+ *                 example: "P@ssw0rd!"
  *     responses:
  *       201:
  *         description: User registered successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   description: Newly created user id.
+ *                   example: "clijx0a1b0000xyz1234"
+ *                 email:
+ *                   type: string
+ *                   format: email
+ *                   example: "alice@example.com"
+ *       400:
+ *         description: Bad request — validation failed for the request body.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Validation error: name must be at least 3 characters"
+ *       409:
+ *         description: Conflict — user with this email already exists.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "User with this email already exists"
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Internal server error"
  */
-router.post("/register", async (req, res, next) => {
-  try {
-    res.send("Register endpoint!");
-  } catch (error) {
-    next(ensureAppError(error));
-  }
-});
+router.post(
+  "/register",
+  validateRequest(RegisterSchema, "/register"),
+  handleRegisterUser
+);
 
 /**
  * @swagger

@@ -93,78 +93,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.AreasScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  parentAreaID: 'parentAreaID',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.DifficultyScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Question_imagesScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  imageId: 'imageId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Question_optionsScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  text: 'text',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  correct: 'correct',
-  additional: 'additional'
-};
-
-exports.Prisma.Question_referencesScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  referenceId: 'referenceId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Question_typesScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.QuestionsScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  areaId: 'areaId',
-  text: 'text',
-  difficultyId: 'difficultyId',
-  approved: 'approved',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  hint: 'hint',
-  explanation: 'explanation',
-  typeId: 'typeId'
-};
-
-exports.Prisma.ResponsesScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId',
-  responseTime: 'responseTime',
-  selectedOptionId: 'selectedOptionId'
-};
-
 exports.Prisma.RolesScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -181,43 +109,6 @@ exports.Prisma.UsersScalarFieldEnum = {
   isActive: 'isActive',
   password: 'password',
   roleId: 'roleId'
-};
-
-exports.Prisma.BooksScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  filePath: 'filePath',
-  fileSize: 'fileSize',
-  mimeType: 'mimeType',
-  updatedBy: 'updatedBy',
-  public: 'public',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.ImagesScalarFieldEnum = {
-  id: 'id',
-  filePath: 'filePath',
-  updatedBy: 'updatedBy',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Permission_typesScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.PermissionsScalarFieldEnum = {
-  id: 'id',
-  fileId: 'fileId',
-  userId: 'userId',
-  grantedBy: 'grantedBy',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  permissionTypeId: 'permissionTypeId'
 };
 
 exports.Prisma.SortOrder = {
@@ -237,20 +128,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  areas: 'areas',
-  difficulty: 'difficulty',
-  question_images: 'question_images',
-  question_options: 'question_options',
-  question_references: 'question_references',
-  question_types: 'question_types',
-  questions: 'questions',
-  responses: 'responses',
   roles: 'roles',
-  users: 'users',
-  books: 'books',
-  images: 'images',
-  permission_types: 'permission_types',
-  permissions: 'permissions'
+  users: 'users'
 };
 /**
  * Create the Client
@@ -281,7 +160,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -300,13 +179,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n  schemas  = [\"QA\", \"auth\", \"files\"]\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/prisma/client\"\n}\n\nmodel areas {\n  id           Int         @id(map: \"areas_pk_707f25\") @default(autoincrement())\n  name         String      @db.VarChar(255)\n  parentAreaID Int?\n  createdAt    DateTime?   @default(now()) @db.Timestamp(6)\n  updatedAt    DateTime?   @default(now()) @db.Timestamp(6)\n  areas        areas?      @relation(\"areasToareas\", fields: [parentAreaID], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_areas_id\")\n  other_areas  areas[]     @relation(\"areasToareas\")\n  questions    questions[]\n\n  @@schema(\"QA\")\n}\n\nmodel difficulty {\n  id        Int         @id(map: \"difficulty_pk_590275\") @default(autoincrement())\n  name      String      @db.VarChar(255)\n  createdAt DateTime?   @default(now()) @db.Timestamp(6)\n  updatedAt DateTime?   @default(now()) @db.Timestamp(6)\n  questions questions[]\n\n  @@schema(\"QA\")\n}\n\nmodel question_images {\n  id         Int       @id(map: \"pk_question_images_id\") @default(autoincrement())\n  questionId Int\n  imageId    Int\n  createdAt  DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt  DateTime? @default(now()) @db.Timestamp(6)\n  questions  questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_question_images_questionId_questions_id\")\n\n  @@schema(\"QA\")\n}\n\nmodel question_options {\n  id         Int       @id(map: \"question_options_pk_9b83b6\") @default(autoincrement())\n  questionId Int\n  text       String\n  createdAt  DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt  DateTime? @default(now()) @db.Timestamp(6)\n  correct    Boolean   @default(false)\n  additional String?\n  questions  questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_questions_id\")\n\n  @@schema(\"QA\")\n}\n\nmodel question_references {\n  id          Int       @id(map: \"question_references_pk_c3126f\") @default(autoincrement())\n  questionId  Int\n  referenceId Int\n  createdAt   DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt   DateTime? @default(now()) @db.Timestamp(6)\n  questions   questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_questions_id\")\n\n  @@schema(\"QA\")\n}\n\nmodel question_types {\n  id        Int         @id(map: \"question_types_pk_695b80\") @default(autoincrement())\n  name      String      @db.VarChar(255)\n  createdAt DateTime?   @default(now()) @db.Timestamp(6)\n  updatedAt DateTime?   @default(now()) @db.Timestamp(6)\n  questions questions[]\n\n  @@schema(\"QA\")\n}\n\nmodel questions {\n  id                  Int                   @id(map: \"questions_pk_febd14\") @default(autoincrement())\n  userId              Int?\n  areaId              Int?\n  text                String\n  difficultyId        Int\n  approved            Boolean               @default(false)\n  createdAt           DateTime?             @default(now()) @db.Timestamp(6)\n  updatedAt           DateTime?             @default(now()) @db.Timestamp(6)\n  hint                String?\n  explanation         String?\n  typeId              Int\n  question_images     question_images[]\n  question_options    question_options[]\n  question_references question_references[]\n  areas               areas?                @relation(fields: [areaId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_areas_id\")\n  difficulty          difficulty            @relation(fields: [difficultyId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_difficulty_id\")\n  question_types      question_types        @relation(fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_types_id\")\n  responses           responses[]\n\n  @@schema(\"QA\")\n}\n\nmodel responses {\n  id               Int       @id(map: \"responses_pk_1e7e40\") @default(autoincrement())\n  questionId       Int\n  createdAt        DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt        DateTime? @default(now()) @db.Timestamp(6)\n  userId           Int\n  responseTime     Int?\n  selectedOptionId Int\n  questions        questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_questions_id\")\n\n  @@schema(\"QA\")\n}\n\nmodel roles {\n  id        Int       @id(map: \"roles_pk_9d86fd\") @default(autoincrement())\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n\n  @@schema(\"auth\")\n}\n\nmodel users {\n  id        Int       @id(map: \"users_pk_31e58c\") @default(autoincrement())\n  email     String    @db.VarChar(255)\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  isActive  Boolean   @default(true)\n  password  String    @db.VarChar(255)\n  roleId    Int\n  books     books[]\n  images    images[]\n\n  @@schema(\"auth\")\n}\n\nmodel books {\n  id          Int           @id(map: \"references_pk_a3632f\") @default(autoincrement())\n  name        String        @db.VarChar(255)\n  filePath    String        @db.VarChar(255)\n  fileSize    BigInt?\n  mimeType    String?       @db.VarChar(100)\n  updatedBy   Int\n  public      Boolean?      @default(false)\n  createdAt   DateTime?     @default(now()) @db.Timestamp(6)\n  updatedAt   DateTime?     @default(now()) @db.Timestamp(6)\n  users       users         @relation(fields: [updatedBy], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_users_id\")\n  permissions permissions[]\n\n  @@schema(\"files\")\n}\n\nmodel images {\n  id        Int       @id(map: \"images_pk_59ad5d\") @default(autoincrement())\n  filePath  String\n  updatedBy Int?\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  users     users?    @relation(fields: [updatedBy], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_users_id\")\n\n  @@schema(\"files\")\n}\n\nmodel permission_types {\n  id        Int       @id(map: \"permission_types_pk_c4cf03\") @default(autoincrement())\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n\n  @@schema(\"files\")\n}\n\nmodel permissions {\n  id               Int       @id(map: \"permissions_pk_e45bb5\") @default(autoincrement())\n  fileId           Int\n  userId           Int\n  grantedBy        Int?\n  createdAt        DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt        DateTime? @default(now()) @db.Timestamp(6)\n  permissionTypeId Int\n  books            books     @relation(fields: [fileId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: \"fk_books_id\")\n\n  @@schema(\"files\")\n}\n",
-  "inlineSchemaHash": "f793d66892b27100311fece30f832eda94db41da28834ae8ba1953d8537ab090",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/prisma/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n  schemas  = [\"auth\"]\n}\n\nmodel roles {\n  id        Int       @id(map: \"roles_pk_9d86fd\") @default(autoincrement())\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n\n  @@schema(\"auth\")\n}\n\nmodel users {\n  id        Int       @id(map: \"users_pk_31e58c\") @default(autoincrement())\n  email     String    @db.VarChar(255)\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  isActive  Boolean   @default(true)\n  password  String    @db.VarChar(255)\n  roleId    Int\n\n  @@schema(\"auth\")\n}\n",
+  "inlineSchemaHash": "052b03ee9411b7d89eada5c9d9ebf43bf7581ec1490cfd7a89afd1bc71d8f7d3",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"areas\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"parentAreaID\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"areas\",\"kind\":\"object\",\"type\":\"areas\",\"relationName\":\"areasToareas\"},{\"name\":\"other_areas\",\"kind\":\"object\",\"type\":\"areas\",\"relationName\":\"areasToareas\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"areasToquestions\"}],\"dbName\":null},\"difficulty\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"difficultyToquestions\"}],\"dbName\":null},\"question_images\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"questionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"imageId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"question_imagesToquestions\"}],\"dbName\":null},\"question_options\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"questionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"correct\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"additional\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"question_optionsToquestions\"}],\"dbName\":null},\"question_references\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"questionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"referenceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"question_referencesToquestions\"}],\"dbName\":null},\"question_types\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"question_typesToquestions\"}],\"dbName\":null},\"questions\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"areaId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"difficultyId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"approved\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"hint\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"explanation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"typeId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"question_images\",\"kind\":\"object\",\"type\":\"question_images\",\"relationName\":\"question_imagesToquestions\"},{\"name\":\"question_options\",\"kind\":\"object\",\"type\":\"question_options\",\"relationName\":\"question_optionsToquestions\"},{\"name\":\"question_references\",\"kind\":\"object\",\"type\":\"question_references\",\"relationName\":\"question_referencesToquestions\"},{\"name\":\"areas\",\"kind\":\"object\",\"type\":\"areas\",\"relationName\":\"areasToquestions\"},{\"name\":\"difficulty\",\"kind\":\"object\",\"type\":\"difficulty\",\"relationName\":\"difficultyToquestions\"},{\"name\":\"question_types\",\"kind\":\"object\",\"type\":\"question_types\",\"relationName\":\"question_typesToquestions\"},{\"name\":\"responses\",\"kind\":\"object\",\"type\":\"responses\",\"relationName\":\"questionsToresponses\"}],\"dbName\":null},\"responses\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"questionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"responseTime\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"selectedOptionId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"questions\",\"kind\":\"object\",\"type\":\"questions\",\"relationName\":\"questionsToresponses\"}],\"dbName\":null},\"roles\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"books\",\"kind\":\"object\",\"type\":\"books\",\"relationName\":\"booksTousers\"},{\"name\":\"images\",\"kind\":\"object\",\"type\":\"images\",\"relationName\":\"imagesTousers\"}],\"dbName\":null},\"books\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"filePath\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fileSize\",\"kind\":\"scalar\",\"type\":\"BigInt\"},{\"name\":\"mimeType\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"updatedBy\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"public\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"users\",\"relationName\":\"booksTousers\"},{\"name\":\"permissions\",\"kind\":\"object\",\"type\":\"permissions\",\"relationName\":\"booksTopermissions\"}],\"dbName\":null},\"images\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"filePath\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"updatedBy\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"users\",\"relationName\":\"imagesTousers\"}],\"dbName\":null},\"permission_types\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"permissions\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"fileId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"grantedBy\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"permissionTypeId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"books\",\"kind\":\"object\",\"type\":\"books\",\"relationName\":\"booksTopermissions\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"roles\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

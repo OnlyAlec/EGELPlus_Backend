@@ -121,78 +121,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.AreasScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  parentAreaID: 'parentAreaID',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.DifficultyScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Question_imagesScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  imageId: 'imageId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Question_optionsScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  text: 'text',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  correct: 'correct',
-  additional: 'additional'
-};
-
-exports.Prisma.Question_referencesScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  referenceId: 'referenceId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Question_typesScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.QuestionsScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  areaId: 'areaId',
-  text: 'text',
-  difficultyId: 'difficultyId',
-  approved: 'approved',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  hint: 'hint',
-  explanation: 'explanation',
-  typeId: 'typeId'
-};
-
-exports.Prisma.ResponsesScalarFieldEnum = {
-  id: 'id',
-  questionId: 'questionId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId',
-  responseTime: 'responseTime',
-  selectedOptionId: 'selectedOptionId'
-};
-
 exports.Prisma.RolesScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -209,43 +137,6 @@ exports.Prisma.UsersScalarFieldEnum = {
   isActive: 'isActive',
   password: 'password',
   roleId: 'roleId'
-};
-
-exports.Prisma.BooksScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  filePath: 'filePath',
-  fileSize: 'fileSize',
-  mimeType: 'mimeType',
-  updatedBy: 'updatedBy',
-  public: 'public',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.ImagesScalarFieldEnum = {
-  id: 'id',
-  filePath: 'filePath',
-  updatedBy: 'updatedBy',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Permission_typesScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.PermissionsScalarFieldEnum = {
-  id: 'id',
-  fileId: 'fileId',
-  userId: 'userId',
-  grantedBy: 'grantedBy',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  permissionTypeId: 'permissionTypeId'
 };
 
 exports.Prisma.SortOrder = {
@@ -265,20 +156,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  areas: 'areas',
-  difficulty: 'difficulty',
-  question_images: 'question_images',
-  question_options: 'question_options',
-  question_references: 'question_references',
-  question_types: 'question_types',
-  questions: 'questions',
-  responses: 'responses',
   roles: 'roles',
-  users: 'users',
-  books: 'books',
-  images: 'images',
-  permission_types: 'permission_types',
-  permissions: 'permissions'
+  users: 'users'
 };
 
 /**

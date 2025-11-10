@@ -14,6 +14,7 @@ model roles {
   name      String    @db.VarChar(255)
   createdAt DateTime? @default(now()) @db.Timestamp(6)
   updatedAt DateTime? @default(now()) @db.Timestamp(6)
+  users     users[]
 
   @@schema("auth")
 }
@@ -27,6 +28,7 @@ model users {
   isActive  Boolean   @default(true)
   password  String    @db.VarChar(255)
   roleId    Int
+  roles     roles     @relation(fields: [roleId], references: [id])
 
   @@schema("auth")
 }

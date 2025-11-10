@@ -2,6 +2,8 @@ networks:
   internal:
     external: true
     name: oa_server_internal
+  egel-net:
+    driver: bridge
 
 services:
   auth-service:
@@ -10,9 +12,9 @@ services:
     container_name: auth-service
     restart: unless-stopped
     ports:
-      - "3001:3001"
+      - "3101:3001"
     networks:
-      - internal
+      - egel-net
 
   # --- Servicio de Preguntas (JS) ---
   # questions-service:
@@ -64,3 +66,4 @@ services:
       # - admin-service
     networks:
       - internal
+      - egel-net

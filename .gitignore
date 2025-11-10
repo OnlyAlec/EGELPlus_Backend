@@ -1,10 +1,10 @@
-auth-service/.env
+auth-service/dist/*
 auth-service/node_modules/*
+auth-service/.env
+auth-service/Portainer.yml
 auth-service/package-lock.json
-auth-service/firebase.json
 
 .vscode/*
 node_modules/*
 package.json
 package-lock.json
-auth-service/dist/*

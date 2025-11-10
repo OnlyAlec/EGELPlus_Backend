@@ -6,13 +6,19 @@ networks:
     driver: bridge
 
 services:
+  # --- Servicio de Autenticación (JS) ---
   auth-service:
     build:
       context: ./auth-service
     container_name: auth-service
     restart: unless-stopped
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgres:5432/${POSTGRES_DB}?schema=auth"
+      PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+      NODE_ENV: production
     networks:
       - egel-net
+      - internal
 
   # --- Servicio de Preguntas (JS) ---
   # questions-service:
@@ -20,6 +26,10 @@ services:
   #     context: ./questions-service
   #   container_name: questions-service
   #   restart: unless-stopped
+  #   environment:
+  #     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgresql:5432/$#{POSTGRES_DB}?schema=auth"
+  #     PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+  #     NODE_ENV: production
   #   networks:
   #     - egel-net
 
@@ -29,6 +39,10 @@ services:
   #     context: ./files-service
   #   container_name: files-service
   #   restart: unless-stopped
+  #   environment:
+  #     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgresql:5432/$#{POSTGRES_DB}?schema=auth"
+  #     PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+  #     NODE_ENV: production
   #   networks:
   #     - egel-net
 
@@ -38,8 +52,10 @@ services:
   #     context: ./admin-service
   #   container_name: admin-service
   #   restart: unless-stopped
-  #   depends_on:
-  #     - db
+  #   environment:
+  #     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgresql:5432/$#{POSTGRES_DB}?schema=auth"
+  #     PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+  #     NODE_ENV: production
   #   networks:
   #     - egel-net
 

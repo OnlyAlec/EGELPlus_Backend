@@ -27,13 +27,16 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
-        description: "Development server",
+        url: "http://ulsa.onlyalec.site/egelplus/auth",
+        description: "Microservice Authentication",
       },
     ],
   },
-  apis: ["./src/routes/*.ts"],
-};
+  apis: [
+    process.env.NODE_ENV === 'production'
+      ? "./dist/routes/*.js"
+      : "./src/routes/*.ts"
+  ],};
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 

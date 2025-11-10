@@ -11,8 +11,6 @@ services:
       context: ./auth-service
     container_name: auth-service
     restart: unless-stopped
-    ports:
-      - "3101:3001"
     networks:
       - egel-net
 
@@ -22,10 +20,8 @@ services:
   #     context: ./questions-service
   #   container_name: questions-service
   #   restart: unless-stopped
-  #   ports:
-  #     - "3002:3002"
   #   networks:
-  #     - internal
+  #     - egel-net
 
   # --- Servicio de Archivos (JS) ---
   # files-service:
@@ -33,10 +29,8 @@ services:
   #     context: ./files-service
   #   container_name: files-service
   #   restart: unless-stopped
-  #   ports:
-  #     - "3003:3003"
   #   networks:
-  #     - internal
+  #     - egel-net
 
   # --- Servicio de Administración (JS) ---
   # admin-service:
@@ -44,12 +38,10 @@ services:
   #     context: ./admin-service
   #   container_name: admin-service
   #   restart: unless-stopped
-  #   ports:
-  #     - "3004:3004"
   #   depends_on:
   #     - db
   #   networks:
-  #     - internal
+  #     - egel-net
 
   # --- API Gateway (NGINX) ---
   nginx-gateway:
@@ -57,8 +49,6 @@ services:
       context: ./nginx
     container_name: nginx-gateway
     restart: unless-stopped
-    ports:
-      - "8642:80"
     depends_on:
       - auth-service
       # - questions-service

@@ -82,7 +82,7 @@ app.use(
     telemetry: false,
     isLoading: true,
     documentDownloadType: "json",
-    url: "/auth/openapi.json",
+    url: "/egelplus/auth/openapi.json",
   })
 );
 

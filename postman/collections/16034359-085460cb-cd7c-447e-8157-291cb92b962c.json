@@ -67,7 +67,7 @@
 					},
 					"response": [
 						{
-							"id": "16034359-48e828a1-07ab-42df-8849-0189d87400dc",
+							"id": "16034359-cb676520-8715-4c3d-86d1-d5054caae0bb",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -109,15 +109,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "58"
+									"value": "570"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"3a-SZpiQtqfmiXG+QvK7dY+FxrRTas\""
+									"value": "W/\"23a-UYCbueCn9tBGOvfbCN4KA+QOQZA\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 01:33:15 GMT"
+									"value": "Tue, 18 Nov 2025 17:07:07 GMT"
 								},
 								{
 									"key": "Connection",
@@ -130,7 +130,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"message\": \"No questions found.\",\n    \"data\": []\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Questions retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 9,\n            \"area\": \"Arquitectura de computadoras y su organización\",\n            \"text\": \"un tecnico mide un resistor en un circuito y obtiene 0.5 a...\",\n            \"difficulty\": \"Medium\",\n            \"hint\": \"aplica la ley de ohm\",\n            \"explanation\": \"segun la ley de ohm v=i*r, la respuesta correcta es...\",\n            \"type\": \"single\",\n            \"options\": [\n                {\n                    \"text\": \"el resistor esta funcionando correctamente.\",\n                    \"correct\": false\n                },\n                {\n                    \"text\": \"el resistor esta danado o es incorrecto.\",\n                    \"correct\": true\n                },\n                {\n                    \"text\": \"el instrumento de medicion esta descalibrado.\",\n                    \"correct\": false\n                }\n            ]\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -145,7 +145,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"¿Cuál es la capital de México?\",\r\n    \"difficultyId\": 1,\r\n    \"typeId\": 1,\r\n    \"areaId\": 1,\r\n    \"hint\": \"Es también la ciudad más grande del país\",\r\n    \"explanation\": \"La capital de México es Ciudad de México.\",\r\n    \"question_options\": [\r\n        {\r\n            \"text\": \"Opcion 1\",\r\n            \"correct\": false\r\n        },\r\n        {\r\n            \"text\": \"Opcion 2\",\r\n            \"correct\": true\r\n        },\r\n        {\r\n            \"text\": \"Opcion 3\",\r\n            \"correct\": false\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"text\": \"¿Cuál es la capital de México???\",\r\n    \"difficultyId\": 1,\r\n    \"typeId\": 1,\r\n    \"subareaId\": 4,\r\n    \"hint\": \"Es también la ciudad más grande del país\",\r\n    \"explanation\": \"La capital de México es Ciudad de México.\",\r\n    \"question_options\": [\r\n        {\r\n            \"text\": \"Opcion 1\",\r\n            \"correct\": false\r\n        },\r\n        {\r\n            \"text\": \"Opcion 2\",\r\n            \"correct\": true\r\n        },\r\n        {\r\n            \"text\": \"Opcion 3\",\r\n            \"correct\": false\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

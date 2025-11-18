@@ -145,7 +145,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"text\": \"¿Cuál es la capital de México?\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,\r\n  \"hint\": \"Es también la ciudad más grande del país\",\r\n  \"explanation\": \"La capital de México es Ciudad de México.\"\r\n}",
+							"raw": "{\r\n    \"text\": \"¿Cuál es la capital de México?\",\r\n    \"difficultyId\": 1,\r\n    \"typeId\": 1,\r\n    \"areaId\": 1,\r\n    \"hint\": \"Es también la ciudad más grande del país\",\r\n    \"explanation\": \"La capital de México es Ciudad de México.\",\r\n    \"question_options\": [\r\n        {\r\n            \"text\": \"Opcion 1\",\r\n            \"correct\": false\r\n        },\r\n        {\r\n            \"text\": \"Opcion 2\",\r\n            \"correct\": true\r\n        },\r\n        {\r\n            \"text\": \"Opcion 3\",\r\n            \"correct\": false\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

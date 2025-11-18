@@ -164,14 +164,14 @@
 					},
 					"response": [
 						{
-							"id": "16034359-2bac4fe9-86e9-47ee-ba22-6c1ce1464ecd",
+							"id": "16034359-23cc96e2-22b4-4994-81a0-b8dc08c560b7",
 							"name": "201 CREATED",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"En Scrum, ¿quién es responsable de maximizar el valor del producto?\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 3,\r\n  \"hint\": \"Se encarga de la gestión del backlog\",\r\n  \"explanation\": \"El Product Owner gestiona el Product Backlog y maximiza el valor. El Scrum Master facilita el proceso.\"\r\n}",
+									"raw": "{\r\n  \"text\": \"Un técnico mide un resistor en un circuito y obtiene 0.5 A...\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,       \r\n  \"subareaId\": 5,       \r\n  \"hint\": \"Aplica la Ley de Ohm\",\r\n  \"explanation\": \"Según la Ley de Ohm V=I*R, la respuesta correcta es...\",\r\n  \"question_options\": [\r\n    { \"text\": \"El resistor está funcionando correctamente.\", \"isCorrect\": false },\r\n    { \"text\": \"El resistor está dañado o es incorrecto.\", \"isCorrect\": true },\r\n    { \"text\": \"El instrumento de medición está descalibrado.\", \"isCorrect\": false }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -214,15 +214,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "423"
+									"value": "448"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1a7-lDJWpmb0HMB+8djpnozSmG3IsKU\""
+									"value": "W/\"1c0-sPsj9pKUZJQviKaSmkSpZiBEy0c\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 02:17:36 GMT"
+									"value": "Tue, 18 Nov 2025 07:43:45 GMT"
 								},
 								{
 									"key": "Connection",
@@ -235,17 +235,17 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"userId\": null,\n        \"areaId\": 3,\n        \"text\": \"en scrum, ¿quien es responsable de maximizar el valor del producto?\",\n        \"difficultyId\": 2,\n        \"approved\": false,\n        \"createdAt\": \"2025-11-18T02:17:36.946Z\",\n        \"updatedAt\": \"2025-11-18T02:17:36.946Z\",\n        \"hint\": \"se encarga de la gestion del backlog\",\n        \"explanation\": \"el product owner gestiona el product backlog y maximiza el valor. el scrum master facilita el proceso.\",\n        \"typeId\": 1\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"text\": \"un tecnico mide un resistor en un circuito y obtiene 0.5 a...\",\n        \"options\": [\n            {\n                \"text\": \"el resistor esta funcionando correctamente.\"\n            },\n            {\n                \"text\": \"el resistor esta danado o es incorrecto.\"\n            },\n            {\n                \"text\": \"el instrumento de medicion esta descalibrado.\"\n            }\n        ],\n        \"correctAnswerIndex\": 1,\n        \"explanation\": \"segun la ley de ohm v=i*r, la respuesta correcta es...\",\n        \"hint\": \"aplica la ley de ohm\",\n        \"areaId\": 1,\n        \"subareaId\": 5,\n        \"difficultyLevel\": 2\n    }\n}"
 						},
 						{
-							"id": "16034359-7b45cf22-30bb-4935-a255-20a707906a16",
+							"id": "16034359-8111d13e-da67-4abc-8a82-912af6150c5d",
 							"name": "409 CONFLICT",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"El principio de la tríada CIA que se violenta cuando un atacante modifica datos es…\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 2,\r\n  \"areaId\": 2,\r\n  \"hint\": \"Crear una pregunta repetida con el mismo texto.\",\r\n  \"explanation\": \"Crear una pregunta repetida con el mismo texto.\"\r\n}",
+									"raw": "{\r\n  \"text\": \"Un técnico mide un resistor en un circuito y obtiene 0.5 A...\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,       \r\n  \"subareaId\": 5,       \r\n  \"hint\": \"Repetir pregunta prueba...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"...\", \"isCorrect\": false },\r\n    { \"text\": \"...\", \"isCorrect\": true },\r\n    { \"text\": \"...\", \"isCorrect\": false }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -296,7 +296,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:21:19 GMT"
+									"value": "Tue, 18 Nov 2025 08:12:35 GMT"
 								},
 								{
 									"key": "Connection",
@@ -312,14 +312,14 @@
 							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"A question with the same text already exists\"\n    }\n}"
 						},
 						{
-							"id": "16034359-c77c44aa-a7e6-423d-bfc4-44cd7240f49b",
+							"id": "16034359-852338cb-f4b5-4f2b-8f9e-727632a79c0e",
 							"name": "400 BAD REQUEST",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"Min\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 2,\r\n  \"areaId\": 2,\r\n  \"hint\": \"Probando con una pregunta que no cumple con min de caracteres.\",\r\n  \"explanation\": \"Probando con una pregunta que no cumple con min de caracteres.\"\r\n}",
+									"raw": "{\r\n  \"text\": \"BLA BLA BLA BLA BLA\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,       \r\n  \"subareaId\": 5,       \r\n  \"hint\": \"Validaciones puestas a prueba (como min de caracteres, opciones y al menos una como correcta)...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"...\", \"isCorrect\": false },\r\n    { \"text\": \"...\", \"isCorrect\": true }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -362,15 +362,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "184"
+									"value": "186"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"b8-d1061OMVRYzjuKg61i6p9IikjBE\""
+									"value": "W/\"ba-l5AlSGuOKIbObEnSgMoaNwUYQM0\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:26:58 GMT"
+									"value": "Tue, 18 Nov 2025 08:14:53 GMT"
 								},
 								{
 									"key": "Connection",
@@ -383,17 +383,17 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"El texto de la pregunta debe tener al menos 10 caracteres.\",\n                \"path\": [\n                    \"text\"\n                ]\n            }\n        ]\n    }\n}"
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"La pregunta debe incluir exactamente 3 opciones.\",\n                \"path\": [\n                    \"question_options\"\n                ]\n            }\n        ]\n    }\n}"
 						},
 						{
-							"id": "16034359-af8c6cd0-6bda-4e83-9258-73db8609032a",
+							"id": "16034359-d764e05c-a27f-48c8-a281-5f065ffb2439",
 							"name": "404 NOT FOUND",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"Probando con un ID en algunos de los campos obligatorios que no existe.\",\r\n  \"difficultyId\": 8,\r\n  \"typeId\": 2,\r\n  \"areaId\": 2,\r\n  \"hint\": \"Probando...\",\r\n  \"explanation\": \"Probando...\"\r\n}",
+									"raw": "{\r\n  \"text\": \"BLA BLA BLA BLA BLA\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 7,       \r\n  \"subareaId\": 7,       \r\n  \"hint\": \"Probanddo con IDs no existentes o que no cumplan las relaciones...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"...\", \"isCorrect\": false },\r\n    { \"text\": \"...\", \"isCorrect\": true },\r\n    { \"text\": \"...\", \"isCorrect\": false }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -436,15 +436,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "79"
+									"value": "112"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"4f-IKsOHlB+rqnYDnfM6YX1I1ww2sk\""
+									"value": "W/\"70-qZQovsOAPqzrpQ/vftCzIKaVR5Y\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:31:41 GMT"
+									"value": "Tue, 18 Nov 2025 08:17:20 GMT"
 								},
 								{
 									"key": "Connection",
@@ -457,7 +457,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Invalid difficultyId\"\n    }\n}"
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Provided subareaId does not belong to provided areaId\"\n    }\n}"
 						}
 					]
 				},
@@ -979,7 +979,17 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/areas",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"areas"
+							]
+						}
 					},
 					"response": [
 						{
@@ -1058,7 +1068,18 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/5/stats",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"5",
+								"stats"
+							]
+						}
 					},
 					"response": [
 						{
@@ -1205,7 +1226,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d124a7f3-e551-4b45-adbb-9907fdc9ce7c",
+				"id": "90b2bc5a-6814-4aa6-b384-c521541ba24c",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -1217,7 +1238,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "5fc55804-85d1-422a-8879-a8bd8162485e",
+				"id": "b1bff86e-cc4c-487b-91f8-428574b61a30",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -1229,6 +1250,7 @@
 	],
 	"variable": [
 		{
+			"key": "U",
 			"value": ""
 		}
 	]

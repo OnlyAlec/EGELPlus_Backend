@@ -153,13 +153,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/questions/create",
+							"raw": "{{baseURL}}/questions",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"questions",
-								"create"
+								"questions"
 							]
 						}
 					},
@@ -1202,11 +1201,35 @@
 			"id": "16034359-5b131650-deb0-4a7e-971b-85ce0861911d"
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d124a7f3-e551-4b45-adbb-9907fdc9ce7c",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5fc55804-85d1-422a-8879-a8bd8162485e",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"key": "baseURL",
-			"value": "",
-			"type": "default"
+			"value": ""
 		}
 	]
 }

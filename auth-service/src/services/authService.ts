@@ -58,7 +58,7 @@ export async function createUser(userData: RegisterUserDto) {
 
   logger.info("User created successfully", {
     userId: created.id,
-    email: created.email
+    email: created.email,
   });
 
   return created;

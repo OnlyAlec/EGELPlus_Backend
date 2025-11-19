@@ -182,7 +182,7 @@ router.post("/login", validateRequest(LoginSchema, "/login"), handleLoginUser);
  *                 example: "alice@example.com"
  *               password:
  *                 type: string
- *                 description: User password. Do not include in responses. Apply your server-side strength rules.
+ *                 description: User password. Must be 8-20 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*).
  *                 example: "P@ssw0rd!"
  *     responses:
  *       201:
@@ -192,14 +192,29 @@ router.post("/login", validateRequest(LoginSchema, "/login"), handleLoginUser);
  *             schema:
  *               type: object
  *               properties:
- *                 id:
- *                   type: string
- *                   description: Newly created user id.
- *                   example: "clijx0a1b0000xyz1234"
- *                 email:
- *                   type: string
- *                   format: email
- *                   example: "alice@example.com"
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     name:
+ *                       type: string
+ *                       example: "Alice Gomez"
+ *                     email:
+ *                       type: string
+ *                       format: email
+ *                       example: "alice@example.com"
+ *                     isActive:
+ *                       type: boolean
+ *                       example: true
+ *                     roleId:
+ *                       type: integer
+ *                       example: 1
+ *                     createdAt:
+ *                       type: string
+ *                       format: date-time
+ *                       example: "2023-10-01T12:00:00Z"
  *       400:
  *         description: Bad request — validation failed for the request body.
  *         content:
@@ -207,9 +222,18 @@ router.post("/login", validateRequest(LoginSchema, "/login"), handleLoginUser);
  *             schema:
  *               type: object
  *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
  *                 error:
- *                   type: string
- *                   example: "Validation error: name must be at least 3 characters"
+ *                   type: object
+ *                   properties:
+ *                     code:
+ *                       type: string
+ *                       example: "VALIDATION_ERROR"
+ *                     message:
+ *                       type: string
+ *                       example: "Validation error: name must be at least 3 characters"
  *       409:
  *         description: Conflict — user with this email already exists.
  *         content:
@@ -217,9 +241,18 @@ router.post("/login", validateRequest(LoginSchema, "/login"), handleLoginUser);
  *             schema:
  *               type: object
  *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
  *                 error:
- *                   type: string
- *                   example: "User with this email already exists"
+ *                   type: object
+ *                   properties:
+ *                     code:
+ *                       type: string
+ *                       example: "CONFLICT_ERROR"
+ *                     message:
+ *                       type: string
+ *                       example: "User with this email already exists"
  *       500:
  *         description: Internal server error.
  *         content:
@@ -227,9 +260,18 @@ router.post("/login", validateRequest(LoginSchema, "/login"), handleLoginUser);
  *             schema:
  *               type: object
  *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
  *                 error:
- *                   type: string
- *                   example: "Internal server error"
+ *                   type: object
+ *                   properties:
+ *                     code:
+ *                       type: string
+ *                       example: "INTERNAL_SERVER_ERROR"
+ *                     message:
+ *                       type: string
+ *                       example: "Internal server error"
  */
 router.post(
   "/register",

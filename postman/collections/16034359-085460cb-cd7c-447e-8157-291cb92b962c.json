@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"alex@alex.con\",\n    \"password\": \"1234\"\n}",
+							"raw": "{\n    \"email\": \"yar@example.com\",\n    \"password\": \"MeEncantaMiNovio\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -176,7 +176,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"text\": \"¿Cuál es la capital de México???\",\r\n    \"difficultyId\": 1,\r\n    \"typeId\": 1,\r\n    \"subareaId\": 4,\r\n    \"hint\": \"Es también la ciudad más grande del país\",\r\n    \"explanation\": \"La capital de México es Ciudad de México.\",\r\n    \"question_options\": [\r\n        {\r\n            \"text\": \"Opcion 1\",\r\n            \"correct\": false\r\n        },\r\n        {\r\n            \"text\": \"Opcion 2\",\r\n            \"correct\": true\r\n        },\r\n        {\r\n            \"text\": \"Opcion 3\",\r\n            \"correct\": false\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n  \"text\": \"¿Qué herramienta se utiliza comúnmente para analizar el tráfico de red y detectar actividades sospechosas?\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 10,\r\n  \"hint\": \"La usan hackers... y también los admins buena onda.\",\r\n  \"explanation\": \"Wireshark permite capturar y analizar paquetes de red, útil para diagnosticar problemas y detectar posibles ataques.\",\r\n  \"question_options\": [\r\n    { \"text\": \"Wireshark\", \"correct\": true },\r\n    { \"text\": \"Notepad++\", \"correct\": false },\r\n    { \"text\": \"FileZilla\", \"correct\": false }\r\n  ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"

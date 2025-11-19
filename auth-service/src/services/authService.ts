@@ -1,9 +1,15 @@
 import { prisma } from "../config/prisma";
-import { hash as bcryptHash } from "bcrypt";
-import { ConflictError, DatabaseError } from "../utils/errors";
+import { hash as bcryptHash, compare } from "bcrypt";
+import { V4 } from "paseto";
+import {
+  ConflictError,
+  DatabaseError,
+  UnauthorizedError,
+} from "../utils/errors";
 import { SALT, USER_ROLE_ID } from "../config/constants";
-import { RegisterUserDto } from "../validators/authSchema";
+import { LoginUserDto, RegisterUserDto } from "../validators/authSchema";
 import { logger } from "../utils/logger";
+import { createPrivateKey } from "crypto";
 
 export async function createUser(userData: RegisterUserDto) {
   const { name, email, password } = userData;
@@ -56,4 +62,68 @@ export async function createUser(userData: RegisterUserDto) {
   });
 
   return created;
+}
+
+export async function loginUser(userData: LoginUserDto) {
+  const { email, password } = userData;
+
+  //* 1. Valida si el correo esta registrado
+  const validUser = await prisma.users.findFirst({
+    where: {
+      email: email,
+    },
+    include: {
+      roles: {
+        select: { name: true },
+      },
+    },
+  });
+
+  if (!validUser) {
+    logger.warn("Login attempt with non-existent email", { email });
+    throw new UnauthorizedError("Invalid credentials");
+  }
+
+  //* 2. Valida si la contraseña es la correcta
+  const isValidPassword = await compare(password, validUser.password);
+
+  if (!isValidPassword) {
+    logger.warn("Login attempt with invalid password", { email });
+    throw new UnauthorizedError("Invalid credentials");
+  }
+
+  if (!validUser.isActive) {
+    logger.warn("Login attempt with inactive user", { email });
+    throw new UnauthorizedError("User is inactive");
+  }
+
+  //* 3. Prepara la data para el PASETO
+  const payload = {
+    sub: validUser.id.toString(),
+    name: validUser.name,
+    role: validUser.roles?.name || "user",
+  };
+
+  //* 4. Construye el PASETO
+  const privateKey = process.env.PASETO_PRIVATE_KEY;
+
+  if (!privateKey) {
+    logger.error("PASETO_PRIVATE_KEY is not defined");
+    throw new Error("Internal server configuration error");
+  }
+
+  const privateKeyPem = Buffer.from(privateKey, "base64").toString("utf-8");
+  const keyObject = createPrivateKey(privateKeyPem);
+
+  const token = await V4.sign(payload, keyObject, {
+    expiresIn: "2h",
+  });
+
+  //* 5. Regresa el token
+  logger.info("User logged in successfully", { userId: validUser.id });
+
+  return {
+    user: validUser,
+    token,
+  };
 }

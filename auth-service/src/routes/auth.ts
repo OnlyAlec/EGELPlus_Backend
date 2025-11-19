@@ -1,8 +1,11 @@
 import express from "express";
 import { logger } from "../utils/logger";
 import { validateRequest } from "../middleware/validateRequest";
-import { RegisterSchema } from "../validators/authSchema";
-import { handleRegisterUser } from "../controllers/authController";
+import { LoginSchema, RegisterSchema } from "../validators/authSchema";
+import {
+  handleLoginUser,
+  handleRegisterUser,
+} from "../controllers/authController";
 
 const router = express.Router();
 
@@ -72,15 +75,82 @@ router.get("/verify", (req, res) => {
  *     tags: [Auth]
  *     summary: Log in and obtain a JWT
  *     description: Authenticates user credentials and returns a JWT on success. Does not require authentication.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: "alice@example.com"
+ *               password:
+ *                 type: string
+ *                 example: "P@ssw0rd!"
  *     responses:
  *       200:
  *         description: Logged in successfully; JWT returned.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     user:
+ *                       type: object
+ *                       properties:
+ *                         name:
+ *                           type: string
+ *                           example: "Alice Gomez"
+ *                         email:
+ *                           type: string
+ *                           format: email
+ *                           example: "alice@example.com"
+ *                         isActive:
+ *                           type: boolean
+ *                           example: true
+ *                         roleId:
+ *                           type: integer
+ *                           example: 1
+ *                         createdAt:
+ *                           type: string
+ *                           format: date-time
+ *                           example: "2023-10-01T12:00:00Z"
+ *                     token:
+ *                       type: string
+ *                       description: JWT Access Token
+ *                       example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
  *       401:
  *         description: Invalid credentials.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: object
+ *                   properties:
+ *                     code:
+ *                       type: string
+ *                       example: "UNAUTHORIZED"
+ *                     message:
+ *                       type: string
+ *                       example: "Invalid credentials"
  */
-router.post("/login", (req, res) => {
-  res.send("Login endpoint!");
-});
+router.post("/login", validateRequest(LoginSchema, "/login"), handleLoginUser);
 
 /**
  * @swagger

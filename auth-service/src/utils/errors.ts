@@ -45,6 +45,12 @@ export class ConflictError extends AppError {
   }
 }
 
+export class UnauthorizedError extends AppError {
+  constructor(message: string = "Unauthorized") {
+    super(message, { code: "UNAUTHORIZED", status: 401 });
+  }
+}
+
 export class NotFoundError extends AppError {
   constructor(message: string = "Resource not found") {
     super(message, { code: "NOT_FOUND", status: 404 });

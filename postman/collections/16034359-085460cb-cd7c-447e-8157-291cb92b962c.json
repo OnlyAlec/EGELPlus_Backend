@@ -38,6 +38,18 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Login User",
+					"id": "16034359-648b3b22-824c-4126-b1ea-e5f27606836f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "16034359-d7f5539f-1bec-4fe8-8dff-f8294a85f012"
@@ -164,14 +176,14 @@
 					},
 					"response": [
 						{
-							"id": "16034359-23cc96e2-22b4-4994-81a0-b8dc08c560b7",
+							"id": "16034359-e9271ccb-c501-4932-b445-b791ad867c2e",
 							"name": "201 CREATED",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"Un técnico mide un resistor en un circuito y obtiene 0.5 A...\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,       \r\n  \"subareaId\": 5,       \r\n  \"hint\": \"Aplica la Ley de Ohm\",\r\n  \"explanation\": \"Según la Ley de Ohm V=I*R, la respuesta correcta es...\",\r\n  \"question_options\": [\r\n    { \"text\": \"El resistor está funcionando correctamente.\", \"isCorrect\": false },\r\n    { \"text\": \"El resistor está dañado o es incorrecto.\", \"isCorrect\": true },\r\n    { \"text\": \"El instrumento de medición está descalibrado.\", \"isCorrect\": false }\r\n  ]\r\n}",
+									"raw": "{\r\n  \"text\": \"¿Qué componente limita la corriente en un circuito?\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 4,\r\n  \"hint\": \"Piensa en el que frena el flujo de electrones.\",\r\n  \"explanation\": \"El resistor limita la corriente de acuerdo con la Ley de Ohm.\",\r\n  \"question_options\": [\r\n    { \"text\": \"Capacitor\", \"correct\": false },\r\n    { \"text\": \"Resistor\", \"correct\": true },\r\n    { \"text\": \"Diodo\", \"correct\": false }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -214,15 +226,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "448"
+									"value": "471"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1c0-sPsj9pKUZJQviKaSmkSpZiBEy0c\""
+									"value": "W/\"1d7-tZ3ZLEL1T/5fCI7cJN2TT+37pI8\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 07:43:45 GMT"
+									"value": "Wed, 19 Nov 2025 17:04:25 GMT"
 								},
 								{
 									"key": "Connection",
@@ -235,17 +247,17 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"text\": \"un tecnico mide un resistor en un circuito y obtiene 0.5 a...\",\n        \"options\": [\n            {\n                \"text\": \"el resistor esta funcionando correctamente.\"\n            },\n            {\n                \"text\": \"el resistor esta danado o es incorrecto.\"\n            },\n            {\n                \"text\": \"el instrumento de medicion esta descalibrado.\"\n            }\n        ],\n        \"correctAnswerIndex\": 1,\n        \"explanation\": \"segun la ley de ohm v=i*r, la respuesta correcta es...\",\n        \"hint\": \"aplica la ley de ohm\",\n        \"areaId\": 1,\n        \"subareaId\": 5,\n        \"difficultyLevel\": 2\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 14,\n        \"text\": \"¿Qué componente limita la corriente en un circuito?\",\n        \"options\": [\n            {\n                \"text\": \"capacitor\",\n                \"correct\": false,\n                \"additional\": null\n            },\n            {\n                \"text\": \"resistor\",\n                \"correct\": true,\n                \"additional\": null\n            },\n            {\n                \"text\": \"diodo\",\n                \"correct\": false,\n                \"additional\": null\n            }\n        ],\n        \"explanation\": \"El resistor limita la corriente de acuerdo con la Ley de Ohm.\",\n        \"hint\": \"Piensa en el que frena el flujo de electrones.\",\n        \"subarea\": \"Circuitos eléctricos y electrónica\",\n        \"difficulty\": \"Basic\"\n    }\n}"
 						},
 						{
-							"id": "16034359-8111d13e-da67-4abc-8a82-912af6150c5d",
+							"id": "16034359-fdbb10ca-5e95-45dc-b439-22c0ec591a7e",
 							"name": "409 CONFLICT",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"Un técnico mide un resistor en un circuito y obtiene 0.5 A...\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,       \r\n  \"subareaId\": 5,       \r\n  \"hint\": \"Repetir pregunta prueba...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"...\", \"isCorrect\": false },\r\n    { \"text\": \"...\", \"isCorrect\": true },\r\n    { \"text\": \"...\", \"isCorrect\": false }\r\n  ]\r\n}",
+									"raw": "{\r\n  \"text\": \"¿Qué estructura sigue el principio FIFO?\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 13,\r\n  \"hint\": \"...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"Pila\", \"correct\": false },\r\n    { \"text\": \"Cola (Queue)\", \"correct\": true },\r\n    { \"text\": \"Árbol AVL\", \"correct\": false }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -296,7 +308,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 08:12:35 GMT"
+									"value": "Wed, 19 Nov 2025 17:12:04 GMT"
 								},
 								{
 									"key": "Connection",
@@ -312,14 +324,14 @@
 							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"A question with the same text already exists\"\n    }\n}"
 						},
 						{
-							"id": "16034359-852338cb-f4b5-4f2b-8f9e-727632a79c0e",
+							"id": "16034359-1de87ea4-f58a-4768-a8d1-f93090997343",
 							"name": "400 BAD REQUEST",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"BLA BLA BLA BLA BLA\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 1,       \r\n  \"subareaId\": 5,       \r\n  \"hint\": \"Validaciones puestas a prueba (como min de caracteres, opciones y al menos una como correcta)...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"...\", \"isCorrect\": false },\r\n    { \"text\": \"...\", \"isCorrect\": true }\r\n  ]\r\n}",
+									"raw": "{\r\n  \"text\": \"\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 13,\r\n  \"hint\": \"...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": []\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -362,15 +374,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "186"
+									"value": "375"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"ba-l5AlSGuOKIbObEnSgMoaNwUYQM0\""
+									"value": "W/\"177-QghKXwfNCsRHAvosutOP2rd0O38\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 08:14:53 GMT"
+									"value": "Wed, 19 Nov 2025 17:14:16 GMT"
 								},
 								{
 									"key": "Connection",
@@ -383,17 +395,17 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"La pregunta debe incluir exactamente 3 opciones.\",\n                \"path\": [\n                    \"question_options\"\n                ]\n            }\n        ]\n    }\n}"
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"El texto de la pregunta debe tener al menos 10 caracteres.\",\n                \"path\": [\n                    \"text\"\n                ]\n            },\n            {\n                \"message\": \"Debe haber exactamente una opción marcada como correcta.\",\n                \"path\": [\n                    \"question_options\"\n                ]\n            },\n            {\n                \"message\": \"La pregunta debe incluir exactamente 3 opciones.\",\n                \"path\": [\n                    \"question_options\"\n                ]\n            }\n        ]\n    }\n}"
 						},
 						{
-							"id": "16034359-d764e05c-a27f-48c8-a281-5f065ffb2439",
+							"id": "16034359-9c442266-979e-4efc-babe-e1d3d9c6d067",
 							"name": "404 NOT FOUND",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"text\": \"BLA BLA BLA BLA BLA\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"areaId\": 7,       \r\n  \"subareaId\": 7,       \r\n  \"hint\": \"Probanddo con IDs no existentes o que no cumplan las relaciones...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"...\", \"isCorrect\": false },\r\n    { \"text\": \"...\", \"isCorrect\": true },\r\n    { \"text\": \"...\", \"isCorrect\": false }\r\n  ]\r\n}",
+									"raw": "{\r\n  \"text\": \"¿Qué operación lógica devuelve verdadero solo si ambas condiciones son verdaderas?\",\r\n  \"difficultyId\": 6,\r\n  \"typeId\": 7,\r\n  \"subareaId\": 1,\r\n  \"hint\": \"Es la operación lógica más estricta.\",\r\n  \"explanation\": \"El operador AND solo devuelve true si ambas condiciones son verdaderas.\",\r\n  \"question_options\": [\r\n    { \"text\": \"OR\", \"correct\": false },\r\n    { \"text\": \"AND\", \"correct\": true },\r\n    { \"text\": \"NOT\", \"correct\": false }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -436,15 +448,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "112"
+									"value": "74"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"70-qZQovsOAPqzrpQ/vftCzIKaVR5Y\""
+									"value": "W/\"4a-lOyapVgAfE76tPvu/fT4toORqSI\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 08:17:20 GMT"
+									"value": "Wed, 19 Nov 2025 17:17:06 GMT"
 								},
 								{
 									"key": "Connection",
@@ -457,7 +469,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Provided subareaId does not belong to provided areaId\"\n    }\n}"
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Invalid subarea\"\n    }\n}"
 						}
 					]
 				},
@@ -838,19 +850,19 @@
 					},
 					"response": [
 						{
-							"id": "16034359-2a521d7f-9b23-4959-ba27-276407e0e62d",
+							"id": "16034359-e3845509-3ade-4b60-a16a-ea620fe2a4f6",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/questions/1",
+									"raw": "{{baseURL}}/questions/13",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"questions",
-										"1"
+										"13"
 									]
 								}
 							},
@@ -880,15 +892,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "89"
+									"value": "91"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"59-OfMx1iOgo6SQJYnOjgBl1QuHjnM\""
+									"value": "W/\"5b-w9QPJ7qJ47e2/xOKwEYj5WQB9Ro\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:12:33 GMT"
+									"value": "Wed, 19 Nov 2025 16:30:20 GMT"
 								},
 								{
 									"key": "Connection",
@@ -901,22 +913,22 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"message\": \"Question deleted successfully\",\n    \"data\": {\n        \"success\": true,\n        \"id\": 1\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Question deleted successfully!\",\n    \"data\": {\n        \"success\": true,\n        \"id\": 13\n    }\n}"
 						},
 						{
-							"id": "16034359-58b21cb2-45ae-4068-9947-5f8bb57a6e8d",
+							"id": "16034359-d2f487ad-c283-40fe-b378-46b6b0489a5d",
 							"name": "404 NOT FOUND",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/questions/1",
+									"raw": "{{baseURL}}/questions/14",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"questions",
-										"1"
+										"14"
 									]
 								}
 							},
@@ -954,7 +966,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:19:04 GMT"
+									"value": "Wed, 19 Nov 2025 16:39:54 GMT"
 								},
 								{
 									"key": "Connection",
@@ -968,6 +980,72 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Question not found\"\n    }\n}"
+						},
+						{
+							"id": "16034359-4dae3367-e779-4163-83f6-d8799f5ece55",
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"id"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-SYAkJ/O8DfbH1rCsMbP+7+hBPs8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 16:43:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"ID must be a Positive Integer\",\n        \"details\": []\n    }\n}"
 						}
 					]
 				},

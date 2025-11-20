@@ -1,0 +1,1354 @@
+{
+	"info": {
+		"_postman_id": "16034359-085460cb-cd7c-447e-8157-291cb92b962c",
+		"name": "EGEL API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth Service",
+			"item": [
+				{
+					"name": "Register User",
+					"id": "16034359-7d2b9667-42dc-4e39-87f1-1efc419e6893",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Yare\",\r\n    \"email\": \"yar@example.com\",\r\n    \"password\": \"MeEncantaMiNovio\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"id": "16034359-648b3b22-824c-4126-b1ea-e5f27606836f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"yar@example.com\",\n    \"password\": \"MeEncantaMiNovio\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "16034359-d7f5539f-1bec-4fe8-8dff-f8294a85f012"
+		},
+		{
+			"name": "Questions Service",
+			"item": [
+				{
+					"name": "Get Questions",
+					"id": "16034359-8a94d366-7153-4f2f-900a-72c3d08fa99c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-cb676520-8715-4c3d-86d1-d5054caae0bb",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "570"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23a-UYCbueCn9tBGOvfbCN4KA+QOQZA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 17:07:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Questions retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 9,\n            \"area\": \"Arquitectura de computadoras y su organización\",\n            \"text\": \"un tecnico mide un resistor en un circuito y obtiene 0.5 a...\",\n            \"difficulty\": \"Medium\",\n            \"hint\": \"aplica la ley de ohm\",\n            \"explanation\": \"segun la ley de ohm v=i*r, la respuesta correcta es...\",\n            \"type\": \"single\",\n            \"options\": [\n                {\n                    \"text\": \"el resistor esta funcionando correctamente.\",\n                    \"correct\": false\n                },\n                {\n                    \"text\": \"el resistor esta danado o es incorrecto.\",\n                    \"correct\": true\n                },\n                {\n                    \"text\": \"el instrumento de medicion esta descalibrado.\",\n                    \"correct\": false\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "New Question",
+					"id": "16034359-9032549f-6812-4278-990a-554d6d7ee25f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"¿Qué herramienta se utiliza comúnmente para analizar el tráfico de red y detectar actividades sospechosas?\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 10,\r\n  \"hint\": \"La usan hackers... y también los admins buena onda.\",\r\n  \"explanation\": \"Wireshark permite capturar y analizar paquetes de red, útil para diagnosticar problemas y detectar posibles ataques.\",\r\n  \"question_options\": [\r\n    { \"text\": \"Wireshark\", \"correct\": true },\r\n    { \"text\": \"Notepad++\", \"correct\": false },\r\n    { \"text\": \"FileZilla\", \"correct\": false }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/questions",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-e9271ccb-c501-4932-b445-b791ad867c2e",
+							"name": "201 CREATED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"¿Qué componente limita la corriente en un circuito?\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 4,\r\n  \"hint\": \"Piensa en el que frena el flujo de electrones.\",\r\n  \"explanation\": \"El resistor limita la corriente de acuerdo con la Ley de Ohm.\",\r\n  \"question_options\": [\r\n    { \"text\": \"Capacitor\", \"correct\": false },\r\n    { \"text\": \"Resistor\", \"correct\": true },\r\n    { \"text\": \"Diodo\", \"correct\": false }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "471"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d7-tZ3ZLEL1T/5fCI7cJN2TT+37pI8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 17:04:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 14,\n        \"text\": \"¿Qué componente limita la corriente en un circuito?\",\n        \"options\": [\n            {\n                \"text\": \"capacitor\",\n                \"correct\": false,\n                \"additional\": null\n            },\n            {\n                \"text\": \"resistor\",\n                \"correct\": true,\n                \"additional\": null\n            },\n            {\n                \"text\": \"diodo\",\n                \"correct\": false,\n                \"additional\": null\n            }\n        ],\n        \"explanation\": \"El resistor limita la corriente de acuerdo con la Ley de Ohm.\",\n        \"hint\": \"Piensa en el que frena el flujo de electrones.\",\n        \"subarea\": \"Circuitos eléctricos y electrónica\",\n        \"difficulty\": \"Basic\"\n    }\n}"
+						},
+						{
+							"id": "16034359-fdbb10ca-5e95-45dc-b439-22c0ec591a7e",
+							"name": "409 CONFLICT",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"¿Qué estructura sigue el principio FIFO?\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 13,\r\n  \"hint\": \"...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": [\r\n    { \"text\": \"Pila\", \"correct\": false },\r\n    { \"text\": \"Cola (Queue)\", \"correct\": true },\r\n    { \"text\": \"Árbol AVL\", \"correct\": false }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-EV5aWGte1HoQORRgaxG/bjFczLQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 17:12:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"A question with the same text already exists\"\n    }\n}"
+						},
+						{
+							"id": "16034359-1de87ea4-f58a-4768-a8d1-f93090997343",
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 13,\r\n  \"hint\": \"...\",\r\n  \"explanation\": \"...\",\r\n  \"question_options\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "375"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"177-QghKXwfNCsRHAvosutOP2rd0O38\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 17:14:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"El texto de la pregunta debe tener al menos 10 caracteres.\",\n                \"path\": [\n                    \"text\"\n                ]\n            },\n            {\n                \"message\": \"Debe haber exactamente una opción marcada como correcta.\",\n                \"path\": [\n                    \"question_options\"\n                ]\n            },\n            {\n                \"message\": \"La pregunta debe incluir exactamente 3 opciones.\",\n                \"path\": [\n                    \"question_options\"\n                ]\n            }\n        ]\n    }\n}"
+						},
+						{
+							"id": "16034359-9c442266-979e-4efc-babe-e1d3d9c6d067",
+							"name": "404 NOT FOUND",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"¿Qué operación lógica devuelve verdadero solo si ambas condiciones son verdaderas?\",\r\n  \"difficultyId\": 6,\r\n  \"typeId\": 7,\r\n  \"subareaId\": 1,\r\n  \"hint\": \"Es la operación lógica más estricta.\",\r\n  \"explanation\": \"El operador AND solo devuelve true si ambas condiciones son verdaderas.\",\r\n  \"question_options\": [\r\n    { \"text\": \"OR\", \"correct\": false },\r\n    { \"text\": \"AND\", \"correct\": true },\r\n    { \"text\": \"NOT\", \"correct\": false }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-lOyapVgAfE76tPvu/fT4toORqSI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 17:17:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Invalid subarea\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Question",
+					"id": "16034359-4a89b3ec-b7ae-4bce-a46b-77ef25a50eab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"una red utiliza eigrp. un administrador nota que un router tiene una ruta en su tabla de topologia marcada como 'passive'. ¿que significa este estado?\",\r\n  \"hint\": \"Probando para repetir una pregunta.\",\r\n  \"explanation\": \"Probando para repetir una pregunta.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/questions/7",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-36e7235e-9e37-449f-a634-6121b3ea5a3c",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"Según el modelo clásico de arquitectura Von Neumann, ¿cuáles son los tres componentes fundamentales que la componen?\",\r\n  \"hint\": \"Este modelo describe la estructura conceptual de una computadora digital con programa almacenado.\",\r\n  \"explanation\": \"La arquitectura Von Neumann se define por tres subsistemas clave: 1) Una Unidad Central de Procesamiento (CPU) que contiene la Unidad Aritmético-Lógica (ALU) y la Unidad de Control. 2) Una unidad de Memoria principal que almacena tanto datos como instrucciones. 3) Los Dispositivos de Entrada y Salida (E/S) que gestionan la comunicación con el exterior.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions/2",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "785"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"311-4s0zMk5ukLJWO3T7o4i+BTkAyVM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 02:35:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 2,\n        \"userId\": null,\n        \"areaId\": 1,\n        \"text\": \"segun el modelo clasico de arquitectura von neumann, ¿cuales son los tres componentes fundamentales que la componen?\",\n        \"difficultyId\": 1,\n        \"approved\": false,\n        \"createdAt\": \"2025-11-18T02:27:53.939Z\",\n        \"updatedAt\": \"2025-11-18T02:27:53.939Z\",\n        \"hint\": \"este modelo describe la estructura conceptual de una computadora digital con programa almacenado.\",\n        \"explanation\": \"la arquitectura von neumann se define por tres subsistemas clave: 1) una unidad central de procesamiento (cpu) que contiene la unidad aritmetico-logica (alu) y la unidad de control. 2) una unidad de memoria principal que almacena tanto datos como instrucciones. 3) los dispositivos de entrada y salida (e/s) que gestionan la comunicacion con el exterior.\",\n        \"typeId\": 2\n    }\n}"
+						},
+						{
+							"id": "16034359-eb24f80c-1b04-4d6b-a96d-c5459474646e",
+							"name": "404 NOT FOUND",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"¿Cuál es la complejidad temporal promedio de búsqueda en una tabla hash bien dimensionada?\",\r\n  \"hint\": \"Promedio con baja colisión\",\r\n  \"explanation\": \"Con buena función hash y factor de carga, la búsqueda esperada es O(1); peor caso es O(n).\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-Pzq3Iq9RK7mE/jp4OBgMXaQI3pQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 03:18:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Question not found\"\n    }\n}"
+						},
+						{
+							"id": "16034359-1ffc650b-9006-41ba-8433-559b19f39da3",
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"Min\",\r\n  \"hint\": \"Probando para validaciones como min de caracteres.\",\r\n  \"explanation\": \"Probando para validaciones como min de caracteres.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/questions/7",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"7"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b8-d1061OMVRYzjuKg61i6p9IikjBE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 03:41:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"El texto de la pregunta debe tener al menos 10 caracteres.\",\n                \"path\": [\n                    \"text\"\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get ByArea",
+					"id": "16034359-c09439c7-44f7-490a-8dcf-092e067dbe3a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/by-area/Área 1 · Implementación de hardware?area=Área 1 · Implementación de hardware",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"by-area",
+								"Área 1 · Implementación de hardware"
+							],
+							"query": [
+								{
+									"key": "area",
+									"value": "Área 1 · Implementación de hardware",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-e15c934f-10f6-4fd5-b157-01eab700c7d8",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/by-area/Área 1 · Implementación de hardware",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"by-area",
+										"Área 1 · Implementación de hardware"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1986"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c2-O1nkHTPMX/kUjLIeyHX17yxo4ak\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 03:02:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Questions retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"userId\": null,\n            \"areaId\": 1,\n            \"text\": \"segun el modelo clasico de arquitectura von neumann, ¿cuales son los tres componentes fundamentales que la componen?\",\n            \"difficultyId\": 1,\n            \"approved\": false,\n            \"createdAt\": \"2025-11-18T02:27:53.939Z\",\n            \"updatedAt\": \"2025-11-18T02:27:53.939Z\",\n            \"hint\": \"este modelo describe la estructura conceptual de una computadora digital con programa almacenado.\",\n            \"explanation\": \"la arquitectura von neumann se define por tres subsistemas clave: 1) una unidad central de procesamiento (cpu) que contiene la unidad aritmetico-logica (alu) y la unidad de control. 2) una unidad de memoria principal que almacena tanto datos como instrucciones. 3) los dispositivos de entrada y salida (e/s) que gestionan la comunicacion con el exterior.\",\n            \"typeId\": 2\n        },\n        {\n            \"id\": 4,\n            \"userId\": null,\n            \"areaId\": 1,\n            \"text\": \"un dispositivo de 240w esta conectado a una toma de corriente domestica de 120v (ca). un fusible en el circuito esta clasificado para 1.5a. ¿que ocurrira al encender el dispositivo?\",\n            \"difficultyId\": 1,\n            \"approved\": false,\n            \"createdAt\": \"2025-11-18T02:39:08.578Z\",\n            \"updatedAt\": \"2025-11-18T02:39:08.578Z\",\n            \"hint\": \"calcula la corriente que consumira el dispositivo usando la formula de la potencia (p=v*i) y comparala con la capacidad del fusible.\",\n            \"explanation\": \"la corriente que el dispositivo requiere es i = p / v = 240w / 120v = 2a. dado que la corriente requerida (2a) es mayor que la corriente nominal del fusible (1.5a), el fusible se fundira (quemara) para proteger el circuito tan pronto como se encienda el dispositivo.\",\n            \"typeId\": 1\n        },\n        {\n            \"id\": 5,\n            \"userId\": null,\n            \"areaId\": 1,\n            \"text\": \"el termino pid en control se refiere a…\",\n            \"difficultyId\": 1,\n            \"approved\": false,\n            \"createdAt\": \"2025-11-18T02:39:51.407Z\",\n            \"updatedAt\": \"2025-11-18T02:39:51.407Z\",\n            \"hint\": \"se tienen 3 acciones de control.\",\n            \"explanation\": \"control pid combina respuesta proporcional, integral y derivativa para mejorar estabilidad y error estacionario.\",\n            \"typeId\": 2\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Question",
+					"id": "16034359-498ba768-e45c-4d08-9e61-77c87a079889",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-e3845509-3ade-4b60-a16a-ea620fe2a4f6",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/13",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-w9QPJ7qJ47e2/xOKwEYj5WQB9Ro\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 16:30:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Question deleted successfully!\",\n    \"data\": {\n        \"success\": true,\n        \"id\": 13\n    }\n}"
+						},
+						{
+							"id": "16034359-d2f487ad-c283-40fe-b378-46b6b0489a5d",
+							"name": "404 NOT FOUND",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/14",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"14"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-Pzq3Iq9RK7mE/jp4OBgMXaQI3pQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 16:39:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Question not found\"\n    }\n}"
+						},
+						{
+							"id": "16034359-4dae3367-e779-4163-83f6-d8799f5ece55",
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"id"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-SYAkJ/O8DfbH1rCsMbP+7+hBPs8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 16:43:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"ID must be a Positive Integer\",\n        \"details\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get AreasHierarchy",
+					"id": "16034359-b15dd113-c082-454c-8269-2f845fe7470f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/areas",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"areas"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-56c68b0f-9edb-48aa-8aa6-d82f8ee1ac3c",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/areas",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"areas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "954"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3ba-fMLzpB/tifrosqPTfpyhxI8MTS8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 03:54:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Área 1 · Implementación de hardware\",\n            \"subareas\": [\n                {\n                    \"id\": 4,\n                    \"name\": \"Circuitos eléctricos y electrónica\",\n                    \"parentAreaID\": 1\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Arquitectura de computadoras y su organización\",\n                    \"parentAreaID\": 1\n                },\n                {\n                    \"id\": 6,\n                    \"name\": \"Sistemas embebidos\",\n                    \"parentAreaID\": 1\n                },\n                {\n                    \"id\": 7,\n                    \"name\": \"Automatización y control de procesos\",\n                    \"parentAreaID\": 1\n                }\n            ],\n            \"hasSubareas\": true\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Área 2 · Implementación de redes de computadoras\",\n            \"subareas\": [\n                {\n                    \"id\": 8,\n                    \"name\": \"Diseño de redes\",\n                    \"parentAreaID\": 2\n                },\n                {\n                    \"id\": 9,\n                    \"name\": \"Administración de redes\",\n                    \"parentAreaID\": 2\n                },\n                {\n                    \"id\": 10,\n                    \"name\": \"Seguridad y evaluación en redes\",\n                    \"parentAreaID\": 2\n                }\n            ],\n            \"hasSubareas\": true\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Área 3 · Desarrollo de software\",\n            \"subareas\": [\n                {\n                    \"id\": 11,\n                    \"name\": \"Ingeniería de software\",\n                    \"parentAreaID\": 3\n                },\n                {\n                    \"id\": 12,\n                    \"name\": \"Programación y software base\",\n                    \"parentAreaID\": 3\n                },\n                {\n                    \"id\": 13,\n                    \"name\": \"Manejo de datos y algoritmos\",\n                    \"parentAreaID\": 3\n                }\n            ],\n            \"hasSubareas\": true\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Stats",
+					"id": "16034359-2d21d3e0-3eed-4b96-8c05-d49c3a1f672b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/5/stats",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"5",
+								"stats"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-64bf2c4b-02b1-425e-92e3-a517f096762f",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/5/stats",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"5",
+										"stats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "142"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8e-HErN5vPTiFyYktdxGxAa0VYYc4A\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 04:00:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"questionId\": 5,\n        \"responsesCount\": 0,\n        \"correctCount\": 0,\n        \"correctRate\": null,\n        \"avgResponseTimeMs\": null,\n        \"lastResponseAt\": null\n    }\n}"
+						},
+						{
+							"id": "16034359-74f6a164-826d-4a8a-b915-3960d105ffea",
+							"name": "404 NOT FOUND",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/10/stats",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"10",
+										"stats"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-Pzq3Iq9RK7mE/jp4OBgMXaQI3pQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Nov 2025 04:00:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Question not found\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "16034359-5b131650-deb0-4a7e-971b-85ce0861911d"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "51296db2-33e7-4802-a789-6d4df7db157c",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2ca54ab9-4fe8-4110-b6c1-406d777aaba6",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": ""
+		}
+	]
+}

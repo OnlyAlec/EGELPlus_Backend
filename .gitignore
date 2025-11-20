@@ -1,1 +1,6 @@
 .vscode/launch.json
+
+admin-service/.env
+admin-service/node_modules/*
+admin-service/dist/*
+admin-service/package-lock.json

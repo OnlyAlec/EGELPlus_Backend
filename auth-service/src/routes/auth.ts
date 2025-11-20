@@ -1,9 +1,11 @@
 import express from "express";
 import { logger } from "../utils/logger";
 import { validateRequest } from "../middleware/validateRequest";
+import { verifyAuthHeader } from "../middleware/authMiddleware";
 import { LoginSchema, RegisterSchema } from "../validators/authSchema";
 import {
   handleLoginUser,
+  handleLogoutUser,
   handleRegisterUser,
 } from "../controllers/authController";
 
@@ -291,11 +293,56 @@ router.post(
  *     responses:
  *       200:
  *         description: Logged out successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Logged out successfully"
  *       401:
  *         description: Unauthorized - Missing or invalid JWT.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: object
+ *                   properties:
+ *                     code:
+ *                       type: string
+ *                       example: "UNAUTHORIZED"
+ *                     message:
+ *                       type: string
+ *                       example: "No token provided"
+ *       500:
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: object
+ *                   properties:
+ *                     code:
+ *                       type: string
+ *                       example: "INTERNAL_SERVER_ERROR"
+ *                     message:
+ *                       type: string
+ *                       example: "Internal server error"
  */
-router.post("/logout", (req, res) => {
-  res.send("Logout endpoint!");
-});
+router.post("/logout", verifyAuthHeader, handleLogoutUser);
 
 export default router;

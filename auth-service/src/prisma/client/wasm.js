@@ -111,6 +111,12 @@ exports.Prisma.UsersScalarFieldEnum = {
   roleId: 'roleId'
 };
 
+exports.Prisma.Revoked_tokensScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  revokedAt: 'revokedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -129,7 +135,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   roles: 'roles',
-  users: 'users'
+  users: 'users',
+  revoked_tokens: 'revoked_tokens'
 };
 /**
  * Create the Client
@@ -142,7 +149,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "E:\\Alec Devs\\EGEL\\auth-service\\src\\prisma\\client",
+      "value": "/home/alec/Projects/EGELPlus_Backend/auth-service/src/prisma/client",
       "fromEnvVar": null
     },
     "config": {
@@ -151,12 +158,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-1.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "E:\\Alec Devs\\EGEL\\auth-service\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/alec/Projects/EGELPlus_Backend/auth-service/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -179,13 +186,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/prisma/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n  schemas  = [\"auth\"]\n}\n\nmodel roles {\n  id        Int       @id(map: \"roles_pk_9d86fd\") @default(autoincrement())\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  users     users[]\n\n  @@schema(\"auth\")\n}\n\nmodel users {\n  id        Int       @id(map: \"users_pk_31e58c\") @default(autoincrement())\n  email     String    @db.VarChar(255)\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  isActive  Boolean   @default(true)\n  password  String    @db.VarChar(255)\n  roleId    Int\n  roles     roles     @relation(fields: [roleId], references: [id])\n\n  @@schema(\"auth\")\n}\n",
-  "inlineSchemaHash": "ec0498951237787d0f2249cd6733bdee088e28e796a7d4cb0f9b61cab0ec3ea0",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/prisma/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n  schemas  = [\"auth\"]\n}\n\nmodel roles {\n  id        Int       @id(map: \"roles_pk_9d86fd\") @default(autoincrement())\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  users     users[]\n\n  @@schema(\"auth\")\n}\n\nmodel users {\n  id        Int       @id(map: \"users_pk_31e58c\") @default(autoincrement())\n  email     String    @db.VarChar(255)\n  name      String    @db.VarChar(255)\n  createdAt DateTime? @default(now()) @db.Timestamp(6)\n  updatedAt DateTime? @default(now()) @db.Timestamp(6)\n  isActive  Boolean   @default(true)\n  password  String    @db.VarChar(255)\n  roleId    Int\n  roles     roles     @relation(fields: [roleId], references: [id])\n\n  @@schema(\"auth\")\n}\n\nmodel revoked_tokens {\n  id        Int      @id @default(autoincrement())\n  token     String   @unique\n  revokedAt DateTime @default(now())\n\n  @@schema(\"auth\")\n}\n",
+  "inlineSchemaHash": "c227dafb121d76eeefdf377cec1de63cecb363b5222fd64c8e0fa2abead9a543",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"roles\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"users\",\"relationName\":\"rolesTousers\"}],\"dbName\":null},\"users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"roles\",\"relationName\":\"rolesTousers\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"roles\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"users\",\"relationName\":\"rolesTousers\"}],\"dbName\":null},\"users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roleId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"roles\",\"relationName\":\"rolesTousers\"}],\"dbName\":null},\"revoked_tokens\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"revokedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

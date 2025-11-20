@@ -127,3 +127,19 @@ export async function loginUser(userData: LoginUserDto) {
     token,
   };
 }
+
+export async function logoutUser(token: string) {
+  //* 1. Guardar el token en la lista negra
+  try {
+    await prisma.revoked_tokens.create({
+      data: {
+        token,
+      },
+    });
+    logger.info("Token revoked successfully");
+  } catch (error) {
+    logger.warn("Token revocation failed or already revoked", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+}

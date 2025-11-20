@@ -139,6 +139,12 @@ exports.Prisma.UsersScalarFieldEnum = {
   roleId: 'roleId'
 };
 
+exports.Prisma.Revoked_tokensScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  revokedAt: 'revokedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -157,7 +163,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   roles: 'roles',
-  users: 'users'
+  users: 'users',
+  revoked_tokens: 'revoked_tokens'
 };
 
 /**

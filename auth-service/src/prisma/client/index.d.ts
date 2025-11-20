@@ -23,6 +23,11 @@ export type roles = $Result.DefaultSelection<Prisma.$rolesPayload>
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
+/**
+ * Model revoked_tokens
+ * 
+ */
+export type revoked_tokens = $Result.DefaultSelection<Prisma.$revoked_tokensPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -161,6 +166,16 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.revoked_tokens`: Exposes CRUD operations for the **revoked_tokens** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Revoked_tokens
+    * const revoked_tokens = await prisma.revoked_tokens.findMany()
+    * ```
+    */
+  get revoked_tokens(): Prisma.revoked_tokensDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -603,7 +618,8 @@ export namespace Prisma {
 
   export const ModelName: {
     roles: 'roles',
-    users: 'users'
+    users: 'users',
+    revoked_tokens: 'revoked_tokens'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -622,7 +638,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "roles" | "users"
+      modelProps: "roles" | "users" | "revoked_tokens"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -774,6 +790,80 @@ export namespace Prisma {
           }
         }
       }
+      revoked_tokens: {
+        payload: Prisma.$revoked_tokensPayload<ExtArgs>
+        fields: Prisma.revoked_tokensFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.revoked_tokensFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.revoked_tokensFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>
+          }
+          findFirst: {
+            args: Prisma.revoked_tokensFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.revoked_tokensFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>
+          }
+          findMany: {
+            args: Prisma.revoked_tokensFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>[]
+          }
+          create: {
+            args: Prisma.revoked_tokensCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>
+          }
+          createMany: {
+            args: Prisma.revoked_tokensCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.revoked_tokensCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>[]
+          }
+          delete: {
+            args: Prisma.revoked_tokensDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>
+          }
+          update: {
+            args: Prisma.revoked_tokensUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>
+          }
+          deleteMany: {
+            args: Prisma.revoked_tokensDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.revoked_tokensUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.revoked_tokensUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>[]
+          }
+          upsert: {
+            args: Prisma.revoked_tokensUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$revoked_tokensPayload>
+          }
+          aggregate: {
+            args: Prisma.Revoked_tokensAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRevoked_tokens>
+          }
+          groupBy: {
+            args: Prisma.revoked_tokensGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Revoked_tokensGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.revoked_tokensCountArgs<ExtArgs>
+            result: $Utils.Optional<Revoked_tokensCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -872,6 +962,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     roles?: rolesOmit
     users?: usersOmit
+    revoked_tokens?: revoked_tokensOmit
   }
 
   /* Types for Logging */
@@ -3209,6 +3300,1009 @@ export namespace Prisma {
 
 
   /**
+   * Model revoked_tokens
+   */
+
+  export type AggregateRevoked_tokens = {
+    _count: Revoked_tokensCountAggregateOutputType | null
+    _avg: Revoked_tokensAvgAggregateOutputType | null
+    _sum: Revoked_tokensSumAggregateOutputType | null
+    _min: Revoked_tokensMinAggregateOutputType | null
+    _max: Revoked_tokensMaxAggregateOutputType | null
+  }
+
+  export type Revoked_tokensAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Revoked_tokensSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Revoked_tokensMinAggregateOutputType = {
+    id: number | null
+    token: string | null
+    revokedAt: Date | null
+  }
+
+  export type Revoked_tokensMaxAggregateOutputType = {
+    id: number | null
+    token: string | null
+    revokedAt: Date | null
+  }
+
+  export type Revoked_tokensCountAggregateOutputType = {
+    id: number
+    token: number
+    revokedAt: number
+    _all: number
+  }
+
+
+  export type Revoked_tokensAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Revoked_tokensSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Revoked_tokensMinAggregateInputType = {
+    id?: true
+    token?: true
+    revokedAt?: true
+  }
+
+  export type Revoked_tokensMaxAggregateInputType = {
+    id?: true
+    token?: true
+    revokedAt?: true
+  }
+
+  export type Revoked_tokensCountAggregateInputType = {
+    id?: true
+    token?: true
+    revokedAt?: true
+    _all?: true
+  }
+
+  export type Revoked_tokensAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which revoked_tokens to aggregate.
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of revoked_tokens to fetch.
+     */
+    orderBy?: revoked_tokensOrderByWithRelationInput | revoked_tokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: revoked_tokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` revoked_tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` revoked_tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned revoked_tokens
+    **/
+    _count?: true | Revoked_tokensCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Revoked_tokensAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Revoked_tokensSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Revoked_tokensMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Revoked_tokensMaxAggregateInputType
+  }
+
+  export type GetRevoked_tokensAggregateType<T extends Revoked_tokensAggregateArgs> = {
+        [P in keyof T & keyof AggregateRevoked_tokens]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRevoked_tokens[P]>
+      : GetScalarType<T[P], AggregateRevoked_tokens[P]>
+  }
+
+
+
+
+  export type revoked_tokensGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: revoked_tokensWhereInput
+    orderBy?: revoked_tokensOrderByWithAggregationInput | revoked_tokensOrderByWithAggregationInput[]
+    by: Revoked_tokensScalarFieldEnum[] | Revoked_tokensScalarFieldEnum
+    having?: revoked_tokensScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Revoked_tokensCountAggregateInputType | true
+    _avg?: Revoked_tokensAvgAggregateInputType
+    _sum?: Revoked_tokensSumAggregateInputType
+    _min?: Revoked_tokensMinAggregateInputType
+    _max?: Revoked_tokensMaxAggregateInputType
+  }
+
+  export type Revoked_tokensGroupByOutputType = {
+    id: number
+    token: string
+    revokedAt: Date
+    _count: Revoked_tokensCountAggregateOutputType | null
+    _avg: Revoked_tokensAvgAggregateOutputType | null
+    _sum: Revoked_tokensSumAggregateOutputType | null
+    _min: Revoked_tokensMinAggregateOutputType | null
+    _max: Revoked_tokensMaxAggregateOutputType | null
+  }
+
+  type GetRevoked_tokensGroupByPayload<T extends revoked_tokensGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Revoked_tokensGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Revoked_tokensGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Revoked_tokensGroupByOutputType[P]>
+            : GetScalarType<T[P], Revoked_tokensGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type revoked_tokensSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    revokedAt?: boolean
+  }, ExtArgs["result"]["revoked_tokens"]>
+
+  export type revoked_tokensSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    revokedAt?: boolean
+  }, ExtArgs["result"]["revoked_tokens"]>
+
+  export type revoked_tokensSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    revokedAt?: boolean
+  }, ExtArgs["result"]["revoked_tokens"]>
+
+  export type revoked_tokensSelectScalar = {
+    id?: boolean
+    token?: boolean
+    revokedAt?: boolean
+  }
+
+  export type revoked_tokensOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "revokedAt", ExtArgs["result"]["revoked_tokens"]>
+
+  export type $revoked_tokensPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "revoked_tokens"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      token: string
+      revokedAt: Date
+    }, ExtArgs["result"]["revoked_tokens"]>
+    composites: {}
+  }
+
+  type revoked_tokensGetPayload<S extends boolean | null | undefined | revoked_tokensDefaultArgs> = $Result.GetResult<Prisma.$revoked_tokensPayload, S>
+
+  type revoked_tokensCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<revoked_tokensFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Revoked_tokensCountAggregateInputType | true
+    }
+
+  export interface revoked_tokensDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['revoked_tokens'], meta: { name: 'revoked_tokens' } }
+    /**
+     * Find zero or one Revoked_tokens that matches the filter.
+     * @param {revoked_tokensFindUniqueArgs} args - Arguments to find a Revoked_tokens
+     * @example
+     * // Get one Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends revoked_tokensFindUniqueArgs>(args: SelectSubset<T, revoked_tokensFindUniqueArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Revoked_tokens that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {revoked_tokensFindUniqueOrThrowArgs} args - Arguments to find a Revoked_tokens
+     * @example
+     * // Get one Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends revoked_tokensFindUniqueOrThrowArgs>(args: SelectSubset<T, revoked_tokensFindUniqueOrThrowArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Revoked_tokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {revoked_tokensFindFirstArgs} args - Arguments to find a Revoked_tokens
+     * @example
+     * // Get one Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends revoked_tokensFindFirstArgs>(args?: SelectSubset<T, revoked_tokensFindFirstArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Revoked_tokens that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {revoked_tokensFindFirstOrThrowArgs} args - Arguments to find a Revoked_tokens
+     * @example
+     * // Get one Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends revoked_tokensFindFirstOrThrowArgs>(args?: SelectSubset<T, revoked_tokensFindFirstOrThrowArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Revoked_tokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {revoked_tokensFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.findMany()
+     * 
+     * // Get first 10 Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const revoked_tokensWithIdOnly = await prisma.revoked_tokens.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends revoked_tokensFindManyArgs>(args?: SelectSubset<T, revoked_tokensFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Revoked_tokens.
+     * @param {revoked_tokensCreateArgs} args - Arguments to create a Revoked_tokens.
+     * @example
+     * // Create one Revoked_tokens
+     * const Revoked_tokens = await prisma.revoked_tokens.create({
+     *   data: {
+     *     // ... data to create a Revoked_tokens
+     *   }
+     * })
+     * 
+     */
+    create<T extends revoked_tokensCreateArgs>(args: SelectSubset<T, revoked_tokensCreateArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Revoked_tokens.
+     * @param {revoked_tokensCreateManyArgs} args - Arguments to create many Revoked_tokens.
+     * @example
+     * // Create many Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends revoked_tokensCreateManyArgs>(args?: SelectSubset<T, revoked_tokensCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Revoked_tokens and returns the data saved in the database.
+     * @param {revoked_tokensCreateManyAndReturnArgs} args - Arguments to create many Revoked_tokens.
+     * @example
+     * // Create many Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Revoked_tokens and only return the `id`
+     * const revoked_tokensWithIdOnly = await prisma.revoked_tokens.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends revoked_tokensCreateManyAndReturnArgs>(args?: SelectSubset<T, revoked_tokensCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Revoked_tokens.
+     * @param {revoked_tokensDeleteArgs} args - Arguments to delete one Revoked_tokens.
+     * @example
+     * // Delete one Revoked_tokens
+     * const Revoked_tokens = await prisma.revoked_tokens.delete({
+     *   where: {
+     *     // ... filter to delete one Revoked_tokens
+     *   }
+     * })
+     * 
+     */
+    delete<T extends revoked_tokensDeleteArgs>(args: SelectSubset<T, revoked_tokensDeleteArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Revoked_tokens.
+     * @param {revoked_tokensUpdateArgs} args - Arguments to update one Revoked_tokens.
+     * @example
+     * // Update one Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends revoked_tokensUpdateArgs>(args: SelectSubset<T, revoked_tokensUpdateArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Revoked_tokens.
+     * @param {revoked_tokensDeleteManyArgs} args - Arguments to filter Revoked_tokens to delete.
+     * @example
+     * // Delete a few Revoked_tokens
+     * const { count } = await prisma.revoked_tokens.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends revoked_tokensDeleteManyArgs>(args?: SelectSubset<T, revoked_tokensDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Revoked_tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {revoked_tokensUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends revoked_tokensUpdateManyArgs>(args: SelectSubset<T, revoked_tokensUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Revoked_tokens and returns the data updated in the database.
+     * @param {revoked_tokensUpdateManyAndReturnArgs} args - Arguments to update many Revoked_tokens.
+     * @example
+     * // Update many Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Revoked_tokens and only return the `id`
+     * const revoked_tokensWithIdOnly = await prisma.revoked_tokens.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends revoked_tokensUpdateManyAndReturnArgs>(args: SelectSubset<T, revoked_tokensUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Revoked_tokens.
+     * @param {revoked_tokensUpsertArgs} args - Arguments to update or create a Revoked_tokens.
+     * @example
+     * // Update or create a Revoked_tokens
+     * const revoked_tokens = await prisma.revoked_tokens.upsert({
+     *   create: {
+     *     // ... data to create a Revoked_tokens
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Revoked_tokens we want to update
+     *   }
+     * })
+     */
+    upsert<T extends revoked_tokensUpsertArgs>(args: SelectSubset<T, revoked_tokensUpsertArgs<ExtArgs>>): Prisma__revoked_tokensClient<$Result.GetResult<Prisma.$revoked_tokensPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Revoked_tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {revoked_tokensCountArgs} args - Arguments to filter Revoked_tokens to count.
+     * @example
+     * // Count the number of Revoked_tokens
+     * const count = await prisma.revoked_tokens.count({
+     *   where: {
+     *     // ... the filter for the Revoked_tokens we want to count
+     *   }
+     * })
+    **/
+    count<T extends revoked_tokensCountArgs>(
+      args?: Subset<T, revoked_tokensCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Revoked_tokensCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Revoked_tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Revoked_tokensAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Revoked_tokensAggregateArgs>(args: Subset<T, Revoked_tokensAggregateArgs>): Prisma.PrismaPromise<GetRevoked_tokensAggregateType<T>>
+
+    /**
+     * Group by Revoked_tokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {revoked_tokensGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends revoked_tokensGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: revoked_tokensGroupByArgs['orderBy'] }
+        : { orderBy?: revoked_tokensGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, revoked_tokensGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRevoked_tokensGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the revoked_tokens model
+   */
+  readonly fields: revoked_tokensFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for revoked_tokens.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__revoked_tokensClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the revoked_tokens model
+   */
+  interface revoked_tokensFieldRefs {
+    readonly id: FieldRef<"revoked_tokens", 'Int'>
+    readonly token: FieldRef<"revoked_tokens", 'String'>
+    readonly revokedAt: FieldRef<"revoked_tokens", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * revoked_tokens findUnique
+   */
+  export type revoked_tokensFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * Filter, which revoked_tokens to fetch.
+     */
+    where: revoked_tokensWhereUniqueInput
+  }
+
+  /**
+   * revoked_tokens findUniqueOrThrow
+   */
+  export type revoked_tokensFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * Filter, which revoked_tokens to fetch.
+     */
+    where: revoked_tokensWhereUniqueInput
+  }
+
+  /**
+   * revoked_tokens findFirst
+   */
+  export type revoked_tokensFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * Filter, which revoked_tokens to fetch.
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of revoked_tokens to fetch.
+     */
+    orderBy?: revoked_tokensOrderByWithRelationInput | revoked_tokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for revoked_tokens.
+     */
+    cursor?: revoked_tokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` revoked_tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` revoked_tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of revoked_tokens.
+     */
+    distinct?: Revoked_tokensScalarFieldEnum | Revoked_tokensScalarFieldEnum[]
+  }
+
+  /**
+   * revoked_tokens findFirstOrThrow
+   */
+  export type revoked_tokensFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * Filter, which revoked_tokens to fetch.
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of revoked_tokens to fetch.
+     */
+    orderBy?: revoked_tokensOrderByWithRelationInput | revoked_tokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for revoked_tokens.
+     */
+    cursor?: revoked_tokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` revoked_tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` revoked_tokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of revoked_tokens.
+     */
+    distinct?: Revoked_tokensScalarFieldEnum | Revoked_tokensScalarFieldEnum[]
+  }
+
+  /**
+   * revoked_tokens findMany
+   */
+  export type revoked_tokensFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * Filter, which revoked_tokens to fetch.
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of revoked_tokens to fetch.
+     */
+    orderBy?: revoked_tokensOrderByWithRelationInput | revoked_tokensOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing revoked_tokens.
+     */
+    cursor?: revoked_tokensWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` revoked_tokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` revoked_tokens.
+     */
+    skip?: number
+    distinct?: Revoked_tokensScalarFieldEnum | Revoked_tokensScalarFieldEnum[]
+  }
+
+  /**
+   * revoked_tokens create
+   */
+  export type revoked_tokensCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * The data needed to create a revoked_tokens.
+     */
+    data: XOR<revoked_tokensCreateInput, revoked_tokensUncheckedCreateInput>
+  }
+
+  /**
+   * revoked_tokens createMany
+   */
+  export type revoked_tokensCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many revoked_tokens.
+     */
+    data: revoked_tokensCreateManyInput | revoked_tokensCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * revoked_tokens createManyAndReturn
+   */
+  export type revoked_tokensCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * The data used to create many revoked_tokens.
+     */
+    data: revoked_tokensCreateManyInput | revoked_tokensCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * revoked_tokens update
+   */
+  export type revoked_tokensUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * The data needed to update a revoked_tokens.
+     */
+    data: XOR<revoked_tokensUpdateInput, revoked_tokensUncheckedUpdateInput>
+    /**
+     * Choose, which revoked_tokens to update.
+     */
+    where: revoked_tokensWhereUniqueInput
+  }
+
+  /**
+   * revoked_tokens updateMany
+   */
+  export type revoked_tokensUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update revoked_tokens.
+     */
+    data: XOR<revoked_tokensUpdateManyMutationInput, revoked_tokensUncheckedUpdateManyInput>
+    /**
+     * Filter which revoked_tokens to update
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * Limit how many revoked_tokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * revoked_tokens updateManyAndReturn
+   */
+  export type revoked_tokensUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * The data used to update revoked_tokens.
+     */
+    data: XOR<revoked_tokensUpdateManyMutationInput, revoked_tokensUncheckedUpdateManyInput>
+    /**
+     * Filter which revoked_tokens to update
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * Limit how many revoked_tokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * revoked_tokens upsert
+   */
+  export type revoked_tokensUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * The filter to search for the revoked_tokens to update in case it exists.
+     */
+    where: revoked_tokensWhereUniqueInput
+    /**
+     * In case the revoked_tokens found by the `where` argument doesn't exist, create a new revoked_tokens with this data.
+     */
+    create: XOR<revoked_tokensCreateInput, revoked_tokensUncheckedCreateInput>
+    /**
+     * In case the revoked_tokens was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<revoked_tokensUpdateInput, revoked_tokensUncheckedUpdateInput>
+  }
+
+  /**
+   * revoked_tokens delete
+   */
+  export type revoked_tokensDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+    /**
+     * Filter which revoked_tokens to delete.
+     */
+    where: revoked_tokensWhereUniqueInput
+  }
+
+  /**
+   * revoked_tokens deleteMany
+   */
+  export type revoked_tokensDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which revoked_tokens to delete
+     */
+    where?: revoked_tokensWhereInput
+    /**
+     * Limit how many revoked_tokens to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * revoked_tokens without action
+   */
+  export type revoked_tokensDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the revoked_tokens
+     */
+    select?: revoked_tokensSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the revoked_tokens
+     */
+    omit?: revoked_tokensOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -3244,6 +4338,15 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const Revoked_tokensScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    revokedAt: 'revokedAt'
+  };
+
+  export type Revoked_tokensScalarFieldEnum = (typeof Revoked_tokensScalarFieldEnum)[keyof typeof Revoked_tokensScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3465,6 +4568,50 @@ export namespace Prisma {
     roleId?: IntWithAggregatesFilter<"users"> | number
   }
 
+  export type revoked_tokensWhereInput = {
+    AND?: revoked_tokensWhereInput | revoked_tokensWhereInput[]
+    OR?: revoked_tokensWhereInput[]
+    NOT?: revoked_tokensWhereInput | revoked_tokensWhereInput[]
+    id?: IntFilter<"revoked_tokens"> | number
+    token?: StringFilter<"revoked_tokens"> | string
+    revokedAt?: DateTimeFilter<"revoked_tokens"> | Date | string
+  }
+
+  export type revoked_tokensOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    revokedAt?: SortOrder
+  }
+
+  export type revoked_tokensWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    token?: string
+    AND?: revoked_tokensWhereInput | revoked_tokensWhereInput[]
+    OR?: revoked_tokensWhereInput[]
+    NOT?: revoked_tokensWhereInput | revoked_tokensWhereInput[]
+    revokedAt?: DateTimeFilter<"revoked_tokens"> | Date | string
+  }, "id" | "token">
+
+  export type revoked_tokensOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    revokedAt?: SortOrder
+    _count?: revoked_tokensCountOrderByAggregateInput
+    _avg?: revoked_tokensAvgOrderByAggregateInput
+    _max?: revoked_tokensMaxOrderByAggregateInput
+    _min?: revoked_tokensMinOrderByAggregateInput
+    _sum?: revoked_tokensSumOrderByAggregateInput
+  }
+
+  export type revoked_tokensScalarWhereWithAggregatesInput = {
+    AND?: revoked_tokensScalarWhereWithAggregatesInput | revoked_tokensScalarWhereWithAggregatesInput[]
+    OR?: revoked_tokensScalarWhereWithAggregatesInput[]
+    NOT?: revoked_tokensScalarWhereWithAggregatesInput | revoked_tokensScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"revoked_tokens"> | number
+    token?: StringWithAggregatesFilter<"revoked_tokens"> | string
+    revokedAt?: DateTimeWithAggregatesFilter<"revoked_tokens"> | Date | string
+  }
+
   export type rolesCreateInput = {
     name: string
     createdAt?: Date | string | null
@@ -3586,6 +4733,45 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     password?: StringFieldUpdateOperationsInput | string
     roleId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type revoked_tokensCreateInput = {
+    token: string
+    revokedAt?: Date | string
+  }
+
+  export type revoked_tokensUncheckedCreateInput = {
+    id?: number
+    token: string
+    revokedAt?: Date | string
+  }
+
+  export type revoked_tokensUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    revokedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type revoked_tokensUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    revokedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type revoked_tokensCreateManyInput = {
+    id?: number
+    token: string
+    revokedAt?: Date | string
+  }
+
+  export type revoked_tokensUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    revokedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type revoked_tokensUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    revokedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3778,6 +4964,57 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type revoked_tokensCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    revokedAt?: SortOrder
+  }
+
+  export type revoked_tokensAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type revoked_tokensMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    revokedAt?: SortOrder
+  }
+
+  export type revoked_tokensMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    revokedAt?: SortOrder
+  }
+
+  export type revoked_tokensSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type usersCreateNestedManyWithoutRolesInput = {
     create?: XOR<usersCreateWithoutRolesInput, usersUncheckedCreateWithoutRolesInput> | usersCreateWithoutRolesInput[] | usersUncheckedCreateWithoutRolesInput[]
     connectOrCreate?: usersCreateOrConnectWithoutRolesInput | usersCreateOrConnectWithoutRolesInput[]
@@ -3852,6 +5089,10 @@ export namespace Prisma {
     upsert?: rolesUpsertWithoutUsersInput
     connect?: rolesWhereUniqueInput
     update?: XOR<XOR<rolesUpdateToOneWithWhereWithoutUsersInput, rolesUpdateWithoutUsersInput>, rolesUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3970,6 +5211,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type usersCreateWithoutRolesInput = {

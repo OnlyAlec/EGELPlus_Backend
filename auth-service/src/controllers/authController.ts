@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { createUser, loginUser } from "../services/authService";
-import { ensureAppError } from "../utils/errors";
+import { createUser, loginUser, logoutUser } from "../services/authService";
+import { ensureAppError, UnauthorizedError } from "../utils/errors";
 import { RequestExtend } from "../types/request";
 import { logger } from "../utils/logger";
 
@@ -67,6 +67,36 @@ export async function handleLoginUser(req: RequestExtend, res: Response) {
     logger.error(`[${req.path}] Error logging in user`, {
       error: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
+    });
+    const appError = ensureAppError(error);
+    return res.status(appError.status).json({
+      success: false,
+      error: {
+        code: appError.code,
+        message: appError.message,
+      },
+    });
+  }
+}
+
+export async function handleLogoutUser(req: RequestExtend, res: Response) {
+  try {
+    const token = req.token;
+    if (!token) {
+      throw new UnauthorizedError("No token provided");
+    }
+
+    await logoutUser(token);
+
+    logger.info(`[${req.path}] User logged out successfully`);
+
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  } catch (error) {
+    logger.error(`[${req.path}] Error logging out user`, {
+      error: error instanceof Error ? error.message : String(error),
     });
     const appError = ensureAppError(error);
     return res.status(appError.status).json({

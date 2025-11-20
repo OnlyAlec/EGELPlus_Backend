@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Yare\",\r\n    \"email\": \"yar@example.com\",\r\n    \"password\": \"MeEncantaMiNovio\"\r\n}",
+							"raw": "{\r\n    \"name\": \"YareA\",\r\n    \"email\": \"yarA@example.com\",\r\n    \"password\": \"@lexis_A2.2003\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -77,12 +77,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "v4.public.eyJzdWIiOiIxNCIsIm5hbWUiOiJZYXJlIiwicm9sZSI6InVzZXIiLCJpYXQiOiIyMDI1LTExLTIwVDA5OjE0OjE3LjE1OFoiLCJleHAiOiIyMDI1LTExLTIwVDExOjE0OjE3LjE1OFoifeq6cJTl7HtLKyZVt8bWQLsWaZySGTPl4tFykCDAvIFaYJR1kLhmHZMv7mWaDVfuyAR5LD3gEVDBMKyTOha10AM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"yar@example.com\",\n    \"password\": \"MeEncantaMiNovio\"\n}"
-						},
 						"url": {
 							"raw": "{{baseURL}}/auth/logout",
 							"host": [

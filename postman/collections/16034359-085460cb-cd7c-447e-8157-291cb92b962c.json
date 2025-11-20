@@ -69,6 +69,18 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "16034359-de86a3d8-83e0-45e4-8645-3af929945aeb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "16034359-d7f5539f-1bec-4fe8-8dff-f8294a85f012"
@@ -176,7 +188,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"text\": \"¿Qué herramienta se utiliza comúnmente para analizar el tráfico de red y detectar actividades sospechosas?\",\r\n  \"difficultyId\": 2,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 10,\r\n  \"hint\": \"La usan hackers... y también los admins buena onda.\",\r\n  \"explanation\": \"Wireshark permite capturar y analizar paquetes de red, útil para diagnosticar problemas y detectar posibles ataques.\",\r\n  \"question_options\": [\r\n    { \"text\": \"Wireshark\", \"correct\": true },\r\n    { \"text\": \"Notepad++\", \"correct\": false },\r\n    { \"text\": \"FileZilla\", \"correct\": false }\r\n  ]\r\n}\r\n",
+							"raw": "{\r\n  \"text\": \"¿Qué estructura de control repite un bloque de código mientras una condición sea verdadera?\",\r\n  \"difficultyId\": 1,\r\n  \"typeId\": 1,\r\n  \"subareaId\": 12,\r\n  \"hint\": \"Es el ciclo más clásico.\",\r\n  \"explanation\": \"El ciclo while repite instrucciones mientras la condición se cumpla.\",\r\n  \"question_options\": [\r\n    { \"text\": \"if\", \"correct\": false },\r\n    { \"text\": \"while\", \"correct\": true },\r\n    { \"text\": \"switch\", \"correct\": false }\r\n  ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -750,7 +762,7 @@
 					]
 				},
 				{
-					"name": "Get ByArea",
+					"name": "Get QuestionsByString",
 					"id": "16034359-c09439c7-44f7-490a-8dcf-092e067dbe3a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -759,40 +771,33 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/questions/by-area/Área 1 · Implementación de hardware?area=Área 1 · Implementación de hardware",
+							"raw": "{{baseURL}}/questions/by-area/Área 3 · Desarrollo de software",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"questions",
 								"by-area",
-								"Área 1 · Implementación de hardware"
-							],
-							"query": [
-								{
-									"key": "area",
-									"value": "Área 1 · Implementación de hardware",
-									"type": "text"
-								}
+								"Área 3 · Desarrollo de software"
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "16034359-e15c934f-10f6-4fd5-b157-01eab700c7d8",
+							"id": "16034359-d8abd13c-a1bc-4daf-8391-64fe56765d2c",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/questions/by-area/Área 1 · Implementación de hardware",
+									"raw": "{{baseURL}}/questions/by-area/Área 3 · Desarrollo de software",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"questions",
 										"by-area",
-										"Área 1 · Implementación de hardware"
+										"Área 3 · Desarrollo de software"
 									]
 								}
 							},
@@ -822,15 +827,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "1986"
+									"value": "2861"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"7c2-O1nkHTPMX/kUjLIeyHX17yxo4ak\""
+									"value": "W/\"b2d-1qOKxlRlZ2o4yBG+zdcCqRAyHaM\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:02:15 GMT"
+									"value": "Wed, 19 Nov 2025 18:13:09 GMT"
 								},
 								{
 									"key": "Connection",
@@ -843,111 +848,23 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"message\": \"Questions retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"userId\": null,\n            \"areaId\": 1,\n            \"text\": \"segun el modelo clasico de arquitectura von neumann, ¿cuales son los tres componentes fundamentales que la componen?\",\n            \"difficultyId\": 1,\n            \"approved\": false,\n            \"createdAt\": \"2025-11-18T02:27:53.939Z\",\n            \"updatedAt\": \"2025-11-18T02:27:53.939Z\",\n            \"hint\": \"este modelo describe la estructura conceptual de una computadora digital con programa almacenado.\",\n            \"explanation\": \"la arquitectura von neumann se define por tres subsistemas clave: 1) una unidad central de procesamiento (cpu) que contiene la unidad aritmetico-logica (alu) y la unidad de control. 2) una unidad de memoria principal que almacena tanto datos como instrucciones. 3) los dispositivos de entrada y salida (e/s) que gestionan la comunicacion con el exterior.\",\n            \"typeId\": 2\n        },\n        {\n            \"id\": 4,\n            \"userId\": null,\n            \"areaId\": 1,\n            \"text\": \"un dispositivo de 240w esta conectado a una toma de corriente domestica de 120v (ca). un fusible en el circuito esta clasificado para 1.5a. ¿que ocurrira al encender el dispositivo?\",\n            \"difficultyId\": 1,\n            \"approved\": false,\n            \"createdAt\": \"2025-11-18T02:39:08.578Z\",\n            \"updatedAt\": \"2025-11-18T02:39:08.578Z\",\n            \"hint\": \"calcula la corriente que consumira el dispositivo usando la formula de la potencia (p=v*i) y comparala con la capacidad del fusible.\",\n            \"explanation\": \"la corriente que el dispositivo requiere es i = p / v = 240w / 120v = 2a. dado que la corriente requerida (2a) es mayor que la corriente nominal del fusible (1.5a), el fusible se fundira (quemara) para proteger el circuito tan pronto como se encienda el dispositivo.\",\n            \"typeId\": 1\n        },\n        {\n            \"id\": 5,\n            \"userId\": null,\n            \"areaId\": 1,\n            \"text\": \"el termino pid en control se refiere a…\",\n            \"difficultyId\": 1,\n            \"approved\": false,\n            \"createdAt\": \"2025-11-18T02:39:51.407Z\",\n            \"updatedAt\": \"2025-11-18T02:39:51.407Z\",\n            \"hint\": \"se tienen 3 acciones de control.\",\n            \"explanation\": \"control pid combina respuesta proporcional, integral y derivativa para mejorar estabilidad y error estacionario.\",\n            \"typeId\": 2\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete Question",
-					"id": "16034359-498ba768-e45c-4d08-9e61-77c87a079889",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/questions/1",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"questions",
-								"1"
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "16034359-e3845509-3ade-4b60-a16a-ea620fe2a4f6",
-							"name": "200 OK",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseURL}}/questions/13",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"questions",
-										"13"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": null,
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Access-Control-Allow-Methods",
-									"value": "GET, POST, PUT, DELETE, OPTIONS"
-								},
-								{
-									"key": "Access-Control-Allow-Headers",
-									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "91"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"5b-w9QPJ7qJ47e2/xOKwEYj5WQB9Ro\""
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 19 Nov 2025 16:30:20 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"message\": \"Question deleted successfully!\",\n    \"data\": {\n        \"success\": true,\n        \"id\": 13\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Questions retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 30,\n            \"area\": 3,\n            \"subarea\": \"Ingeniería de software\",\n            \"text\": \"¿Qué documento describe los requisitos funcionales de un sistema?\",\n            \"difficulty\": \"Medium\",\n            \"hint\": \"Es lo primero que se hace antes de diseñar.\",\n            \"explanation\": \"El SRS (Software Requirements Specification) define lo que el sistema debe hacer.\",\n            \"options\": [\n                {\n                    \"text\": \"diagrama uml\",\n                    \"correct\": false,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"especificacion de requisitos (srs)\",\n                    \"correct\": true,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"manual de usuario\",\n                    \"correct\": false,\n                    \"additional\": null\n                }\n            ]\n        },\n        {\n            \"id\": 31,\n            \"area\": 3,\n            \"subarea\": \"Ingeniería de software\",\n            \"text\": \"¿Cuál modelo de desarrollo usa iteraciones cortas y retroalimentación frecuente?\",\n            \"difficulty\": \"Intermediate\",\n            \"hint\": \"El favorito de todos los devs modernos.\",\n            \"explanation\": \"Las metodologías ágiles se basan en ciclos iterativos y mejora continua.\",\n            \"options\": [\n                {\n                    \"text\": \"cascada\",\n                    \"correct\": false,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"agil\",\n                    \"correct\": true,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"espiral rigida\",\n                    \"correct\": false,\n                    \"additional\": null\n                }\n            ]\n        },\n        {\n            \"id\": 32,\n            \"area\": 3,\n            \"subarea\": \"Programación y software base\",\n            \"text\": \"¿Qué estructura de control repite un bloque de código mientras una condición sea verdadera?\",\n            \"difficulty\": \"Advanced\",\n            \"hint\": \"Es el ciclo más clásico.\",\n            \"explanation\": \"El ciclo while repite instrucciones mientras la condición se cumpla.\",\n            \"options\": [\n                {\n                    \"text\": \"if\",\n                    \"correct\": false,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"while\",\n                    \"correct\": true,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"switch\",\n                    \"correct\": false,\n                    \"additional\": null\n                }\n            ]\n        },\n        {\n            \"id\": 33,\n            \"area\": 3,\n            \"subarea\": \"Manejo de datos y algoritmos\",\n            \"text\": \"¿Qué estructura almacena elementos en formato clave–valor?\",\n            \"difficulty\": \"Basic\",\n            \"hint\": \"Diccionario, pero en programación.\",\n            \"explanation\": \"El mapa o diccionario permite buscar valores a partir de una clave.\",\n            \"options\": [\n                {\n                    \"text\": \"lista\",\n                    \"correct\": false,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"mapa (o diccionario)\",\n                    \"correct\": true,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"pila\",\n                    \"correct\": false,\n                    \"additional\": null\n                }\n            ]\n        },\n        {\n            \"id\": 34,\n            \"area\": 3,\n            \"subarea\": \"Manejo de datos y algoritmos\",\n            \"text\": \"¿Cuál es la complejidad temporal de una búsqueda binaria?\",\n            \"difficulty\": \"Intermediate\",\n            \"hint\": \"Es logarítmica.\",\n            \"explanation\": \"La búsqueda binaria reduce el espacio a la mitad en cada paso: O(log n).\",\n            \"options\": [\n                {\n                    \"text\": \"o(n)\",\n                    \"correct\": false,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"o(log n)\",\n                    \"correct\": true,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"o(n²)\",\n                    \"correct\": false,\n                    \"additional\": null\n                }\n            ]\n        },\n        {\n            \"id\": 35,\n            \"area\": 3,\n            \"subarea\": \"Manejo de datos y algoritmos\",\n            \"text\": \"¿Qué estructura sigue el principio FIFO?\",\n            \"difficulty\": \"Basic\",\n            \"hint\": \"Primero en entrar, primero en salir.\",\n            \"explanation\": \"La cola opera bajo el principio FIFO.\",\n            \"options\": [\n                {\n                    \"text\": \"pila\",\n                    \"correct\": false,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"cola (queue)\",\n                    \"correct\": true,\n                    \"additional\": null\n                },\n                {\n                    \"text\": \"arbol avl\",\n                    \"correct\": false,\n                    \"additional\": null\n                }\n            ]\n        }\n    ]\n}"
 						},
 						{
-							"id": "16034359-d2f487ad-c283-40fe-b378-46b6b0489a5d",
+							"id": "16034359-5b8e3af8-fde2-4c3a-a325-038a3b2051b0",
 							"name": "404 NOT FOUND",
 							"originalRequest": {
-								"method": "DELETE",
+								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseURL}}/questions/14",
+									"raw": "{{baseURL}}/questions/by-area/blabla",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"questions",
-										"14"
+										"by-area",
+										"blabla"
 									]
 								}
 							},
@@ -977,15 +894,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "77"
+									"value": "73"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"4d-Pzq3Iq9RK7mE/jp4OBgMXaQI3pQ\""
+									"value": "W/\"49-mqaBlbxy5oXA3yVBoV5cRj6VA8Y\""
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 19 Nov 2025 16:39:54 GMT"
+									"value": "Wed, 19 Nov 2025 18:13:36 GMT"
 								},
 								{
 									"key": "Connection",
@@ -998,10 +915,33 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Question not found\"\n    }\n}"
-						},
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Name not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Question",
+					"id": "16034359-498ba768-e45c-4d08-9e61-77c87a079889",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/questions/32",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"questions",
+								"32"
+							]
+						}
+					},
+					"response": [
 						{
-							"id": "16034359-4dae3367-e779-4163-83f6-d8799f5ece55",
+							"id": "16034359-b54d6dcd-842f-4124-a120-fd9c06c5f25f",
 							"name": "400 BAD REQUEST",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1051,7 +991,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 19 Nov 2025 16:43:31 GMT"
+									"value": "Wed, 19 Nov 2025 18:14:53 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1065,6 +1005,138 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"ID must be a Positive Integer\",\n        \"details\": []\n    }\n}"
+						},
+						{
+							"id": "16034359-27bd9df1-9967-440b-82bd-c64a8bf6c97a",
+							"name": "404 NOT FOUND",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/150",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"150"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-Pzq3Iq9RK7mE/jp4OBgMXaQI3pQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 18:15:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Question not found\"\n    }\n}"
+						},
+						{
+							"id": "16034359-3f546e16-7620-4ca9-98d4-e259d9f31b38",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/questions/32",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"questions",
+										"32"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-jBivgpo/VAJV+x2Pw/rBb5ztLO4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Nov 2025 18:18:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Question deleted successfully!\",\n    \"data\": {\n        \"success\": true,\n        \"id\": 32\n    }\n}"
 						}
 					]
 				},
@@ -1090,7 +1162,7 @@
 					},
 					"response": [
 						{
-							"id": "16034359-56c68b0f-9edb-48aa-8aa6-d82f8ee1ac3c",
+							"id": "16034359-e034ab13-cb62-4802-87f0-6e33bcf1fce2",
 							"name": "200 OK",
 							"originalRequest": {
 								"method": "GET",
@@ -1132,15 +1204,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "954"
+									"value": "969"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"3ba-fMLzpB/tifrosqPTfpyhxI8MTS8\""
+									"value": "W/\"3c9-rkVCVclVOIEM9ugq0klF4MbE+Lg\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 18 Nov 2025 03:54:51 GMT"
+									"value": "Wed, 19 Nov 2025 18:00:55 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1153,7 +1225,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Área 1 · Implementación de hardware\",\n            \"subareas\": [\n                {\n                    \"id\": 4,\n                    \"name\": \"Circuitos eléctricos y electrónica\",\n                    \"parentAreaID\": 1\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Arquitectura de computadoras y su organización\",\n                    \"parentAreaID\": 1\n                },\n                {\n                    \"id\": 6,\n                    \"name\": \"Sistemas embebidos\",\n                    \"parentAreaID\": 1\n                },\n                {\n                    \"id\": 7,\n                    \"name\": \"Automatización y control de procesos\",\n                    \"parentAreaID\": 1\n                }\n            ],\n            \"hasSubareas\": true\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Área 2 · Implementación de redes de computadoras\",\n            \"subareas\": [\n                {\n                    \"id\": 8,\n                    \"name\": \"Diseño de redes\",\n                    \"parentAreaID\": 2\n                },\n                {\n                    \"id\": 9,\n                    \"name\": \"Administración de redes\",\n                    \"parentAreaID\": 2\n                },\n                {\n                    \"id\": 10,\n                    \"name\": \"Seguridad y evaluación en redes\",\n                    \"parentAreaID\": 2\n                }\n            ],\n            \"hasSubareas\": true\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Área 3 · Desarrollo de software\",\n            \"subareas\": [\n                {\n                    \"id\": 11,\n                    \"name\": \"Ingeniería de software\",\n                    \"parentAreaID\": 3\n                },\n                {\n                    \"id\": 12,\n                    \"name\": \"Programación y software base\",\n                    \"parentAreaID\": 3\n                },\n                {\n                    \"id\": 13,\n                    \"name\": \"Manejo de datos y algoritmos\",\n                    \"parentAreaID\": 3\n                }\n            ],\n            \"hasSubareas\": true\n        }\n    ]\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Areas hierarchy retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Área 1 · Implementación de hardware\",\n            \"subareas\": [\n                {\n                    \"id\": 4,\n                    \"name\": \"Circuitos eléctricos y electrónica\",\n                    \"totalQuestions\": 2\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Arquitectura de computadoras y su organización\",\n                    \"totalQuestions\": 3\n                },\n                {\n                    \"id\": 6,\n                    \"name\": \"Sistemas embebidos\",\n                    \"totalQuestions\": 2\n                },\n                {\n                    \"id\": 7,\n                    \"name\": \"Automatización y control de procesos\",\n                    \"totalQuestions\": 1\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Área 2 · Implementación de redes de computadoras\",\n            \"subareas\": [\n                {\n                    \"id\": 8,\n                    \"name\": \"Diseño de redes\",\n                    \"totalQuestions\": 4\n                },\n                {\n                    \"id\": 9,\n                    \"name\": \"Administración de redes\",\n                    \"totalQuestions\": 4\n                },\n                {\n                    \"id\": 10,\n                    \"name\": \"Seguridad y evaluación en redes\",\n                    \"totalQuestions\": 2\n                }\n            ]\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Área 3 · Desarrollo de software\",\n            \"subareas\": [\n                {\n                    \"id\": 11,\n                    \"name\": \"Ingeniería de software\",\n                    \"totalQuestions\": 2\n                },\n                {\n                    \"id\": 12,\n                    \"name\": \"Programación y software base\",\n                    \"totalQuestions\": 1\n                },\n                {\n                    \"id\": 13,\n                    \"name\": \"Manejo de datos y algoritmos\",\n                    \"totalQuestions\": 3\n                }\n            ]\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1317,6 +1389,443 @@
 				}
 			],
 			"id": "16034359-5b131650-deb0-4a7e-971b-85ce0861911d"
+		},
+		{
+			"name": "Admin Service",
+			"item": [
+				{
+					"name": "Get Users",
+					"id": "16034359-b1ffd35b-1144-4ba1-8731-dfd76124a95a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/admin/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"admin",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-38b45366-e68a-4359-9bcd-505890134132",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/admin/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admin",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2628"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a44-x+q5ZeeW2jvvI1BZQzX0P5pl2RA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Nov 2025 07:16:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Users retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 13,\n            \"name\": \"Test Test\",\n            \"email\": \"test@example.com\",\n            \"roleId\": 1,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-10T05:05:45.961Z\",\n            \"updatedAt\": \"2025-11-10T05:05:45.961Z\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Yare\",\n            \"email\": \"yar@example.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-10T05:21:40.715Z\",\n            \"updatedAt\": \"2025-11-10T05:21:40.715Z\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Alice Gomez\",\n            \"email\": \"alice@example.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T01:42:18.178Z\",\n            \"updatedAt\": \"2025-11-14T01:42:18.178Z\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Lalo Gomez\",\n            \"email\": \"lalo@example.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T01:43:21.775Z\",\n            \"updatedAt\": \"2025-11-14T01:43:21.775Z\"\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Pedro Páramo\",\n            \"email\": \"pedro@ejemplo.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T02:08:30.773Z\",\n            \"updatedAt\": \"2025-11-14T02:08:30.773Z\"\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Pedro Páramo\",\n            \"email\": \"paramo@ejemplo.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T02:19:29.605Z\",\n            \"updatedAt\": \"2025-11-14T02:19:29.605Z\"\n        },\n        {\n            \"id\": 19,\n            \"name\": \"Rosario\",\n            \"email\": \"castellanos@ejemplo.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T02:22:32.060Z\",\n            \"updatedAt\": \"2025-11-14T02:22:32.060Z\"\n        },\n        {\n            \"id\": 20,\n            \"name\": \"Pedro Páramo\",\n            \"email\": \"pedro@gmail.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T03:01:50.973Z\",\n            \"updatedAt\": \"2025-11-14T03:01:50.973Z\"\n        },\n        {\n            \"id\": 21,\n            \"name\": \"hjbjhbhj\",\n            \"email\": \"pedro@outlook.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-14T03:02:56.956Z\",\n            \"updatedAt\": \"2025-11-14T03:02:56.956Z\"\n        },\n        {\n            \"id\": 22,\n            \"name\": \"Pedro\",\n            \"email\": \"paramo@gmail.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-16T06:25:56.617Z\",\n            \"updatedAt\": \"2025-11-16T06:25:56.617Z\"\n        },\n        {\n            \"id\": 23,\n            \"name\": \"Hola\",\n            \"email\": \"hola@ejemplo.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-16T08:47:15.319Z\",\n            \"updatedAt\": \"2025-11-16T08:47:15.319Z\"\n        },\n        {\n            \"id\": 24,\n            \"name\": \"Jsjdbd\",\n            \"email\": \"sjsjn@ejemplo.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-16T09:23:11.804Z\",\n            \"updatedAt\": \"2025-11-16T09:23:11.804Z\"\n        },\n        {\n            \"id\": 25,\n            \"name\": \"Pepe\",\n            \"email\": \"pepe@outlook.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-16T09:39:51.941Z\",\n            \"updatedAt\": \"2025-11-16T09:39:51.941Z\"\n        },\n        {\n            \"id\": 26,\n            \"name\": \"Pepe\",\n            \"email\": \"jose@gmail.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-16T10:04:50.678Z\",\n            \"updatedAt\": \"2025-11-16T10:04:50.678Z\"\n        },\n        {\n            \"id\": 27,\n            \"name\": \"Juan\",\n            \"email\": \"juan@outlook.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-18T02:40:39.388Z\",\n            \"updatedAt\": \"2025-11-18T02:40:39.388Z\"\n        },\n        {\n            \"id\": 28,\n            \"name\": \"YareA\",\n            \"email\": \"yarA@example.com\",\n            \"roleId\": 2,\n            \"isActive\": true,\n            \"createdAt\": \"2025-11-19T18:05:04.636Z\",\n            \"updatedAt\": \"2025-11-19T18:05:04.636Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Permissions",
+					"id": "16034359-1af60548-42fa-4c59-b2ce-cfaedb3ed8c7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"permissions\": [\r\n    { \"fileId\": 1, \"permissionTypeId\": 2 },\r\n    { \"fileId\": 2, \"permissionTypeId\": 1 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/admin/users/15/permissions",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"admin",
+								"users",
+								"15",
+								"permissions"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "16034359-9a57a32c-dd2d-49a4-86e1-6159e00b27f5",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"permissions\": [\r\n    {\r\n      \"fileId\": 1,\r\n      \"permissionTypeId\": 1\r\n    },\r\n    {\r\n      \"fileId\": 2,\r\n      \"permissionTypeId\": 1\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/admin/users/29/permissions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"29",
+										"permissions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f0-UhpzyUguqNzNNDoxaVOUPetBjKc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Nov 2025 08:39:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Permissions updated successfully\",\n    \"data\": [\n        {\n            \"userId\": 29,\n            \"fileId\": 1,\n            \"permissionTypeId\": 1,\n            \"updatedAt\": \"2025-11-20T08:39:36.233Z\"\n        },\n        {\n            \"userId\": 29,\n            \"fileId\": 2,\n            \"permissionTypeId\": 1,\n            \"updatedAt\": \"2025-11-20T08:39:36.327Z\"\n        }\n    ]\n}"
+						},
+						{
+							"id": "16034359-fcc4ef13-9b3e-4a09-b7ec-d8591d539ad1",
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"permissions\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/admin/users/29/permissions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"29",
+										"permissions"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "165"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a5-sy7s+ZJK8DG4MiIEvM5Lj5BYOVg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Nov 2025 08:46:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"Validation failed\",\n        \"details\": [\n            {\n                \"message\": \"Debe enviar al menos un permiso.\",\n                \"path\": [\n                    \"permissions\"\n                ]\n            }\n        ]\n    }\n}"
+						},
+						{
+							"id": "16034359-f3499d98-36ef-4bff-86f1-1ab8bbb96b98",
+							"name": "404 NOT FOUND",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"permissions\": [\r\n    { \r\n        \"fileId\": 1, \r\n        \"permissionTypeId\": 1 \r\n        }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/admin/users/100/permissions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"100",
+										"permissions"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-YMn7ryZWH+5t55voVwKAs7NLFcc\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Nov 2025 08:47:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"User not found\"\n    }\n}"
+						},
+						{
+							"id": "16034359-116d678f-35c7-4d57-b701-7b6b00040235",
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"permissions\": [\r\n    { \"fileId\": 999999999999, \"permissionTypeId\": 1 }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/admin/users/29/permissions",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"29",
+										"permissions"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-E7Z25Cl1yotIHbBmfkhQjWmnrdM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Nov 2025 08:49:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"error\": {\n        \"code\": \"DB_ERROR\",\n        \"message\": \"Failed to update user permissions\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"id": "16034359-32adf0b2-3af1-4243-aeb4-072535df1df7"
 		}
 	],
 	"event": [

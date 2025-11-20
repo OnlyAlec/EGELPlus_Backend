@@ -1,1 +1,8 @@
 .vscode/launch.json
+.env
+
+questions-service/dist/*
+questions-service/node_modules/*
+questions-service/.env
+questions-service/Portainer.yml
+questions-service/package-lock.json

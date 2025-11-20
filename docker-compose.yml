@@ -1,0 +1,75 @@
+networks:
+  internal:
+    external: true
+    name: oa_server_internal
+  egel-net:
+    driver: bridge
+
+services:
+  # --- Servicio de Autenticación (JS) ---
+  auth-service:
+    build:
+      context: ./auth-service
+    container_name: auth-service
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgres:5432/${POSTGRES_DB}?schema=auth"
+      PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+      NODE_ENV: production
+    networks:
+      - egel-net
+      - internal
+
+  # --- Servicio de Preguntas (JS) ---
+  # questions-service:
+  #   build:
+  #     context: ./questions-service
+  #   container_name: questions-service
+  #   restart: unless-stopped
+  #   environment:
+  #     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgresql:5432/$#{POSTGRES_DB}?schema=auth"
+  #     PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+  #     NODE_ENV: production
+  #   networks:
+  #     - egel-net
+
+  # --- Servicio de Archivos (JS) ---
+  # files-service:
+  #   build:
+  #     context: ./files-service
+  #   container_name: files-service
+  #   restart: unless-stopped
+  #   environment:
+  #     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgresql:5432/$#{POSTGRES_DB}?schema=auth"
+  #     PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+  #     NODE_ENV: production
+  #   networks:
+  #     - egel-net
+
+  # --- Servicio de Administración (JS) ---
+  # admin-service:
+  #   build:
+  #     context: ./admin-service
+  #   container_name: admin-service
+  #   restart: unless-stopped
+  #   environment:
+  #     DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_postgresql:5432/$#{POSTGRES_DB}?schema=auth"
+  #     PASETO_PRIVATE_KEY: ${PASETO_PRIVATE_KEY}
+  #     NODE_ENV: production
+  #   networks:
+  #     - egel-net
+
+  # --- API Gateway (NGINX) ---
+  nginx-gateway:
+    build:
+      context: ./nginx
+    container_name: nginx-gateway
+    restart: unless-stopped
+    depends_on:
+      - auth-service
+      # - questions-service
+      # - files-service
+      # - admin-service
+    networks:
+      - internal
+      - egel-net

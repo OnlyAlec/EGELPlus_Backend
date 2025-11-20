@@ -80,6 +80,13 @@ router.use(verifyTokenPresent, verifyPasetoToken);
  *                         type: string
  *                       options:
  *                         type: array
+ *                         items:
+ *                           type: object
+ *                           properties:
+ *                             text:
+ *                               type: string
+ *                             correct:
+ *                               type: boolean
  *       500:
  *         description: Internal server error
  */
@@ -101,8 +108,54 @@ router.get("/", handleGetAllQuestions);
  *     responses:
  *       201:
  *         description: Question created successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                     area:
+ *                       type: integer
+ *                       nullable: true
+ *                     subarea:
+ *                       type: string
+ *                       nullable: true
+ *                     text:
+ *                       type: string
+ *                     difficulty:
+ *                       type: string
+ *                       nullable: true
+ *                     hint:
+ *                       type: string
+ *                       nullable: true
+ *                     explanation:
+ *                       type: string
+ *                       nullable: true
+ *                     options:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           text:
+ *                             type: string
+ *                           correct:
+ *                             type: boolean
+ *                           additional:
+ *                             type: string
+ *                             nullable: true
  *       400:
  *         description: Validation error.
+ *       409:
+ *         description: Conflict - A question with the same text already exists.
+ *       404:
+ *         description: Not Found - Invalid subarea or relations.
  *       500:
  *         description: Internal server error.
  */
@@ -135,10 +188,52 @@ router.post(
  *     responses:
  *       200:
  *         description: Question updated successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                     text:
+ *                       type: string
+ *                     options:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           text:
+ *                             type: string
+ *                     correctAnswerIndex:
+ *                       type: integer
+ *                       nullable: true
+ *                     explanation:
+ *                       type: string
+ *                       nullable: true
+ *                     hint:
+ *                       type: string
+ *                       nullable: true
+ *                     areaId:
+ *                       type: integer
+ *                       nullable: true
+ *                     subareaId:
+ *                       type: integer
+ *                       nullable: true
+ *                     difficultyLevel:
+ *                       type: integer
+ *                       nullable: true
  *       400:
  *         description: Validation error or invalid ID.
  *       404:
  *         description: Question not found.
+ *       409:
+ *         description: Conflict - Duplicate text attempt.
  *       500:
  *         description: Internal server error.
  */
@@ -165,6 +260,23 @@ router.put(
  *     responses:
  *       200:
  *         description: Question deleted successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     success:
+ *                       type: boolean
+ *                     id:
+ *                       type: integer
  *       400:
  *         description: Invalid ID.
  *       404:
@@ -191,6 +303,54 @@ router.delete("/:id", handleDeleteQuestion);
  *     responses:
  *       200:
  *         description: A list of questions for the specified area.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       area:
+ *                         type: integer
+ *                         nullable: true
+ *                       subarea:
+ *                         type: string
+ *                         nullable: true
+ *                       text:
+ *                         type: string
+ *                       difficulty:
+ *                         type: string
+ *                         nullable: true
+ *                       hint:
+ *                         type: string
+ *                         nullable: true
+ *                       explanation:
+ *                         type: string
+ *                         nullable: true
+ *                       options:
+ *                         type: array
+ *                         items:
+ *                           type: object
+ *                           properties:
+ *                             text:
+ *                               type: string
+ *                             correct:
+ *                               type: boolean
+ *                             additional:
+ *                               type: string
+ *                               nullable: true
+ *       404:
+ *         description: Area name not found.
  *       500:
  *         description: Internal server error.
  */
@@ -213,6 +373,33 @@ router.get("/by-area/:area", handleGetQuestionsByString);
  *     responses:
  *       200:
  *         description: Statistics for the question.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     questionId:
+ *                       type: integer
+ *                     responsesCount:
+ *                       type: integer
+ *                     correctCount:
+ *                       type: integer
+ *                     correctRate:
+ *                       type: number
+ *                       nullable: true
+ *                     avgResponseTimeMs:
+ *                       type: number
+ *                       nullable: true
+ *                     lastResponseAt:
+ *                       type: string
+ *                       format: date-time
+ *                       nullable: true
  *       400:
  *         description: Invalid ID.
  *       404:
@@ -232,6 +419,34 @@ router.get("/:id/stats", handleGetQuestionStats);
  *     responses:
  *       200:
  *         description: A list of areas with subareas.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       name:
+ *                         type: string
+ *                       subareas:
+ *                         type: array
+ *                         items:
+ *                           type: object
+ *                           properties:
+ *                             id:
+ *                               type: integer
+ *                             name:
+ *                               type: string
  *       500:
  *         description: Internal server error.
  */

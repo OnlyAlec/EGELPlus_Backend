@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["QA"]
+}
+
+model areas {
+  id           Int         @id(map: "areas_pk_707f25") @default(autoincrement())
+  name         String      @db.VarChar(255)
+  parentAreaID Int?
+  createdAt    DateTime?   @default(now()) @db.Timestamp(6)
+  updatedAt    DateTime?   @default(now()) @db.Timestamp(6)
+  areas        areas?      @relation("areasToareas", fields: [parentAreaID], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_areas_id")
+  other_areas  areas[]     @relation("areasToareas")
+  questions    questions[]
+
+  @@schema("QA")
+}
+
+model difficulty {
+  id        Int         @id(map: "difficulty_pk_590275") @default(autoincrement())
+  name      String      @db.VarChar(255)
+  createdAt DateTime?   @default(now()) @db.Timestamp(6)
+  updatedAt DateTime?   @default(now()) @db.Timestamp(6)
+  questions questions[]
+
+  @@schema("QA")
+}
+
+model question_images {
+  id         Int       @id(map: "pk_question_images_id") @default(autoincrement())
+  questionId Int
+  imageId    Int
+  createdAt  DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime? @default(now()) @db.Timestamp(6)
+  questions  questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_question_images_questionId_questions_id")
+
+  @@schema("QA")
+}
+
+model question_options {
+  id         Int       @id(map: "question_options_pk_9b83b6") @default(autoincrement())
+  questionId Int
+  text       String
+  createdAt  DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime? @default(now()) @db.Timestamp(6)
+  correct    Boolean   @default(false)
+  additional String?
+  questions  questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_questions_id")
+
+  @@schema("QA")
+}
+
+model question_references {
+  id          Int       @id(map: "question_references_pk_c3126f") @default(autoincrement())
+  questionId  Int
+  referenceId Int
+  createdAt   DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime? @default(now()) @db.Timestamp(6)
+  questions   questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_questions_id")
+
+  @@schema("QA")
+}
+
+model question_types {
+  id        Int         @id(map: "question_types_pk_695b80") @default(autoincrement())
+  name      String      @db.VarChar(255)
+  createdAt DateTime?   @default(now()) @db.Timestamp(6)
+  updatedAt DateTime?   @default(now()) @db.Timestamp(6)
+  questions questions[]
+
+  @@schema("QA")
+}
+
+model questions {
+  id                  Int                   @id(map: "questions_pk_febd14") @default(autoincrement())
+  userId              Int?
+  areaId              Int?
+  text                String
+  difficultyId        Int
+  approved            Boolean               @default(false)
+  createdAt           DateTime?             @default(now()) @db.Timestamp(6)
+  updatedAt           DateTime?             @default(now()) @db.Timestamp(6)
+  hint                String?
+  explanation         String?
+  typeId              Int
+  question_images     question_images[]
+  question_options    question_options[]
+  question_references question_references[]
+  areas               areas?                @relation(fields: [areaId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_areas_id")
+  difficulty          difficulty            @relation(fields: [difficultyId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_difficulty_id")
+  question_types      question_types        @relation(fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_types_id")
+  responses           responses[]
+
+  @@schema("QA")
+}
+
+model responses {
+  id               Int       @id(map: "responses_pk_1e7e40") @default(autoincrement())
+  questionId       Int
+  createdAt        DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt        DateTime? @default(now()) @db.Timestamp(6)
+  userId           Int
+  responseTime     Int?
+  selectedOptionId Int
+  questions        questions @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_questions_id")
+
+  @@schema("QA")
+}

@@ -1852,7 +1852,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "51296db2-33e7-4802-a789-6d4df7db157c",
+				"id": "5ff6b802-6a6d-4198-939c-890c5dd0f7fb",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -1864,7 +1864,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2ca54ab9-4fe8-4110-b6c1-406d777aaba6",
+				"id": "68db8647-86bc-444f-a6b3-15fa26965d5e",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -1878,6 +1878,11 @@
 		{
 			"key": "baseURL",
 			"value": ""
+		},
+		{
+			"key": "baseURL-Prod",
+			"value": "",
+			"type": "default"
 		}
 	]
 }

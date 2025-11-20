@@ -2,6 +2,10 @@ import express from "express";
 import { logger } from "../utils/logger";
 import { validateRequest } from "../middleware/validateRequest";
 import {
+  verifyTokenPresent,
+  verifyPasetoToken,
+} from "../middleware/authMiddleware";
+import {
   CreateQuestionSchema,
   UpdateQuestionSchema,
 } from "../validators/questionsSchema";
@@ -25,6 +29,8 @@ router.use((req, _res, next) => {
   next();
 });
 
+router.use(verifyTokenPresent, verifyPasetoToken);
+
 /**
  * @swagger
  * tags:
@@ -38,7 +44,44 @@ router.use((req, _res, next) => {
  *   get:
  *     tags: [Questions]
  *     summary: Get all questions
- *     description: Returns a list of all questions
+ *     description: Retrieve a list of all questions available in the system. The response includes details such as area, subarea, difficulty, type, and options for each question.
+ *     responses:
+ *       200:
+ *         description: A list of questions.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       area:
+ *                         type: integer
+ *                       subarea:
+ *                         type: string
+ *                       text:
+ *                         type: string
+ *                       difficulty:
+ *                         type: string
+ *                       hint:
+ *                         type: string
+ *                       explanation:
+ *                         type: string
+ *                       type:
+ *                         type: string
+ *                       options:
+ *                         type: array
+ *       500:
+ *         description: Internal server error
  */
 router.get("/", handleGetAllQuestions);
 
@@ -48,7 +91,20 @@ router.get("/", handleGetAllQuestions);
  *   post:
  *     tags: [Questions]
  *     summary: Create a new question
- *     description: Creates a new question
+ *     description: Create a new question with the provided details. Requires a valid payload matching the creation schema.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateQuestion'
+ *     responses:
+ *       201:
+ *         description: Question created successfully.
+ *       400:
+ *         description: Validation error.
+ *       500:
+ *         description: Internal server error.
  */
 router.post(
   "/",
@@ -62,7 +118,29 @@ router.post(
  *   put:
  *     tags: [Questions]
  *     summary: Update a question by ID
- *     description: Updates an existing question by its ID
+ *     description: Update an existing question identified by its ID. Requires a valid payload matching the update schema.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the question to update.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateQuestion'
+ *     responses:
+ *       200:
+ *         description: Question updated successfully.
+ *       400:
+ *         description: Validation error or invalid ID.
+ *       404:
+ *         description: Question not found.
+ *       500:
+ *         description: Internal server error.
  */
 router.put(
   "/:id",
@@ -76,17 +154,45 @@ router.put(
  *   delete:
  *     tags: [Questions]
  *     summary: Delete a question by ID
- *     description: Deletes an existing question by its ID
+ *     description: Delete an existing question identified by its ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the question to delete.
+ *     responses:
+ *       200:
+ *         description: Question deleted successfully.
+ *       400:
+ *         description: Invalid ID.
+ *       404:
+ *         description: Question not found.
+ *       500:
+ *         description: Internal server error.
  */
 router.delete("/:id", handleDeleteQuestion);
 
 /**
  * @swagger
- * /questions/by-area/{areaName}:
+ * /questions/by-area/{area}:
  *   get:
  *     tags: [Questions]
  *     summary: Get questions by area name
- *     description: Returns a list of questions filtered by area name (case-insensitive). Use the area name as path parameter.
+ *     description: Retrieve a list of questions filtered by the specified area name (case-insensitive).
+ *     parameters:
+ *       - in: path
+ *         name: area
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The name of the area to filter by.
+ *     responses:
+ *       200:
+ *         description: A list of questions for the specified area.
+ *       500:
+ *         description: Internal server error.
  */
 router.get("/by-area/:area", handleGetQuestionsByString);
 
@@ -96,7 +202,23 @@ router.get("/by-area/:area", handleGetQuestionsByString);
  *   get:
  *     tags: [Questions]
  *     summary: Get statistics for a question
- *     description: Returns basic metrics for a question such as responses count, correct rate and average response time.
+ *     description: Retrieve statistical metrics for a specific question, such as response count, correct rate, and average response time.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the question.
+ *     responses:
+ *       200:
+ *         description: Statistics for the question.
+ *       400:
+ *         description: Invalid ID.
+ *       404:
+ *         description: Question not found.
+ *       500:
+ *         description: Internal server error.
  */
 router.get("/:id/stats", handleGetQuestionStats);
 
@@ -106,7 +228,12 @@ router.get("/:id/stats", handleGetQuestionStats);
  *   get:
  *     tags: [Questions]
  *     summary: Get areas with subareas
- *     description: Returns a list of top-level areas each containing their subareas.
+ *     description: Retrieve the hierarchy of areas, including their respective subareas.
+ *     responses:
+ *       200:
+ *         description: A list of areas with subareas.
+ *       500:
+ *         description: Internal server error.
  */
 router.get("/areas", handleGetAreasHierarchy);
 

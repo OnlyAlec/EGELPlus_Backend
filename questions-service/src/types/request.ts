@@ -5,4 +5,5 @@ import { Request } from "express";
  */
 export interface RequestExtend extends Request {
   validatedData?: Record<string, unknown>;
+  user?: Record<string, unknown>;
 }

@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { V4 } from "paseto";
 import { logger } from "../utils/logger";
 import { RequestExtend } from "../types/request";
+import { createPublicKey } from "crypto";
 
 export const verifyTokenPresent = (
   req: Request,
@@ -41,14 +42,17 @@ export const verifyPasetoToken = async (
   }
 
   try {
-    const key = process.env.PASETO_PUBLIC_KEY;
+    const publicKey = process.env.PASETO_PUBLIC_KEY;
 
-    if (!key) {
+    if (!publicKey) {
       logger.error("PASETO_PUBLIC_KEY is not defined in environment variables");
       throw new Error("Internal Server Error: Configuration missing");
     }
 
-    const payload = await V4.verify(token, key);
+    const publicKeyPem = Buffer.from(publicKey, "base64").toString("utf-8");
+    const keyObject = createPublicKey(publicKeyPem);
+
+    const payload = await V4.verify(token, keyObject);
 
     // Attach payload to request for further use if needed
     req.user = payload;

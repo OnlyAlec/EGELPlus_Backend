@@ -8,6 +8,7 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "conventionalCommits.scopes": [
-    "qa-service"
+    "qa-service",
+    "adm-service"
   ]
 }

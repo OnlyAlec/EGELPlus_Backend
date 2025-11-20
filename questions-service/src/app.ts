@@ -22,8 +22,7 @@ const swaggerOptions = {
     info: {
       title: "EGEL Plus - Questions Service API",
       version: "1.1.0",
-      description:
-        "Questions management service for EGEL Plus app",
+      description: "Questions management service for EGEL Plus app",
     },
     servers: [
       {
@@ -31,12 +30,27 @@ const swaggerOptions = {
         description: "Microservice Questions",
       },
     ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "PASETO",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   apis: [
-    process.env.NODE_ENV === 'production'
+    process.env.NODE_ENV === "production"
       ? "./dist/routes/*.js"
-      : "./src/routes/*.ts"
-  ],};
+      : "./src/routes/*.ts",
+  ],
+};
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
@@ -105,7 +119,8 @@ const errorHandler: ErrorRequestHandler = (error, req, res, _next) => {
     timestamp: new Date().toISOString(),
   };
   if (appError && (appError as any).code) body.code = (appError as any).code;
-  if (appError && (appError as any).details) body.details = (appError as any).details;
+  if (appError && (appError as any).details)
+    body.details = (appError as any).details;
 
   res.status(appError?.status || 500).json({ error: body });
 };
